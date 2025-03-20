@@ -603,7 +603,7 @@ h6 {
   top: 60px;
   left: 0;
   bottom: 0;
-  width: 230px;
+  width: 225px;
   z-index: 996;
   transition: all 0.3s;
   padding: 20px;
@@ -634,7 +634,7 @@ h6 {
 
   #main,
   #footer {
-    margin-left: 255px;
+    margin-left: 245px;
   }
 }
 
@@ -684,7 +684,7 @@ h6 {
 .sidebar-nav .nav-link {
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   color: #4154f1;
   transition: 0.3;
@@ -702,6 +702,7 @@ h6 {
 .sidebar-nav .nav-link.collapsed {
   color: #012970;
   background: #fff;
+  font-size: 12px;
 }
 
 .sidebar-nav .nav-link.collapsed i {
