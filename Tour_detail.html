@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Forms / Elements - NiceAdmin Bootstrap Template</title>
+  <title>Components / Badges - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,7 +46,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">TravelVN</span>
+        <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -69,7 +69,7 @@
 
         <li class="nav-item dropdown">
 
-          <a class="nav-link nav-icon" href ="#" data-bs-toggle="dropdown">
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-bell"></i>
             <span class="badge bg-primary badge-number">4</span>
           </a><!-- End Notification Icon -->
@@ -282,10 +282,10 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
               <i class="bi bi-circle"></i><span>Alerts</span>
@@ -297,7 +297,7 @@
             </a>
           </li>
           <li>
-            <a href="components-badges.html">
+            <a href="components-badges.html" class="active">
               <i class="bi bi-circle"></i><span>Badges</span>
             </a>
           </li>
@@ -360,13 +360,13 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html" class="active">
-              <i class="bi bi-circle"></i><span>Thêm tour mới</span>
+            <a href="forms-elements.html">
+              <i class="bi bi-circle"></i><span>Form Elements</span>
             </a>
           </li>
           <li>
@@ -506,122 +506,212 @@
 
   </aside><!-- End Sidebar-->
 
-  <main id="main" class="main">
+  <main id="main" class="main ">
 
     <div class="pagetitle d-flex">
-      <h1>Thêm mới tour</h1>
+      <h1>Chi tiết tour</h1>
       <nav class="ms-auto">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
           <li class="breadcrumb-item">Quản lý tour</li>
-          <li class="breadcrumb-item active">Thêm tour mới</li>
+          <li class="breadcrumb-item active">Chi tiết tour</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
-        <div class="col">
-<!-- ...existing code... -->
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Nhập thông tin cho tour mới</h5>
-
-    <!-- General Form Elements -->
-    <form>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <div class="form-floating">
-            <input type="text" class="form-control" id="tourId" placeholder="ID tour">
-            <label for="tourId">ID tour</label>
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Hình ảnh tour</h5>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                  <img src="assets/img/slides-1.jpg" class="img-fluid" alt="...">
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <img src="assets/img/slides-2.jpg" class="img-fluid" alt="...">
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <img src="assets/img/slides-3.jpg" class="img-fluid" alt="...">
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-floating">
-            <input class="form-control" type="file" id="tourImage" placeholder="Ảnh">
-            <label for="tourImage">Ảnh</label>
-          </div>
-        </div>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourName" placeholder="Tên tour">
-        <label for="tourName">Tên tour</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourDuration" placeholder="Thời lượng tour">
-        <label for="tourDuration">Thời lượng tour</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourTarget" placeholder="Đối tượng nhắm tới">
-        <label for="tourTarget">Đối tượng nhắm tới</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourAttractions" placeholder="Điểm tham quan">
-        <label for="tourAttractions">Điểm tham quan</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourDeparture" placeholder="Nơi khởi hành">
-        <label for="tourDeparture">Nơi khởi hành</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourIdealTime" placeholder="Thời gian lý tưởng">
-        <label for="tourIdealTime">Thời gian lý tưởng</label>
-      </div>
-      <div class="form-floating mb-3">
-        <textarea class="form-control" id="tourDescription" placeholder="Mô tả tour" style="height: 100px"></textarea>
-        <label for="tourDescription">Mô tả tour</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourIncluded" placeholder="Đã bao gồm">
-        <label for="tourIncluded">Đã bao gồm</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="tourNotIncluded" placeholder="Chưa bao gồm">
-        <label for="tourNotIncluded">Chưa bao gồm</label>
-      </div>
-      <div class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0 ">Phương tiện</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="vehicleCar">
-            <label class="form-check-label" for="vehicleCar">Ô tô</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="vehiclePlane" checked>
-            <label class="form-check-label" for="vehiclePlane">Máy bay</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="vehicleTrain" checked>
-            <label class="form-check-label" for="vehicleTrain">Tàu hoả</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="vehicleShip" checked>
-            <label class="form-check-label" for="vehicleShip">Tàu thuỷ</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3 d-flex">
-        <div class="col ms-auto">
-          <button type="reset" class="btn btn-warning text-light">Nhập lại</button>
-        </div>
-        <div class="col-sm-2 ms-auto">
-          <button type="submit" class="btn btn-primary">Thêm tour mới</button>
-        </div>
-      </div>
-    </form><!-- End General Form Elements -->
-  </div>
-</div>
-<!-- ...existing code... -->
-              </form><!-- End General Form Elements -->
-
+        <div class="col-sm-9">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+              <h5 class="card-title col ms-3">Chương trình tour</h5>
+             <a href="#" class="col mt-2 text-end fs-3"> <i class="bi bi-calendar2-plus"></i>
+             </a>
+            </div>
+              <table class="table table-sm ">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Địa điểm</th>
+                    <th scope="col">Ngày</th>
+                    <th scope="col">Món ăn</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Tuỳ chỉnh</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Brandon Jacob</td>
+                    <td>Designer</td>
+                    <td>28</td>
+                    <td></td>
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Bridie Kessler</td>
+                    <td>Developer</td>
+                    <td>35</td>
+                    <td></td>
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Ashleigh Langosh</td>
+                    <td>Finance</td>
+                    <td>45</td>
+                    <td></td>
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Angus Grady</td>
+                    <td>HR</td>
+                    <td>34</td>
+                    <td></td>
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Raheem Lehner</td>
+                    <td>Dynamic Division Officer</td>
+                    <td>47</td>
+                    <td></td>
+            
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Raheem Lehner</td>
+                    <td>Dynamic Division Officer</td>
+                    <td>47</td>
+                    <td></td>
+            
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Raheem Lehner</td>
+                    <td>Dynamic Division Officer</td>
+                    <td>47</td>
+                    <td></td>
+            
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Raheem Lehner</td>
+                    <td>Dynamic Division Officer</td>
+                    <td>47</td>
+                    <td></td>
+            
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Raheem Lehner</td>
+                    <td>Dynamic Division Officer</td>
+                    <td>47</td>
+                    <td></td>
+            
+                    <td class="row">
+                      <a  href="#" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a></td>
+                  </tr>
+                 
+                </tbody>
+               
+              </table>
+              <div class="d-flex rows">
+              <a href="Tour_unit_management.html" class="fw-bold text-end col"> Quản lý các đơn vị tour <i class="bi-arrow-right"></i></a>
+              <!-- End small tables -->
+            </div>
             </div>
           </div>
 
         </div>
-
         
       </div>
+      <div class="row">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Thông tin tour</h5>
+            <p><strong>ID:</strong> T001-00001-3N2Đ</p>
+            <p><strong>Tên:</strong> Đà Lạt 3 Ngày 2 Đêm</p>
+            <p><strong>Thời lượng:</strong> 3 Ngày 2 Đêm</p>
+            <p><strong>Giá:</strong> 3.000.000 VND</p>
+            <p><strong>Khởi hành:</strong> Hà Nội</p>
+            <p><strong>Điểm tham quan:</strong> Hồ Xuân Hương, Thung Lũng Tình Yêu, Đồi Mộng Mơ</p>
+            <p><strong>Thời gian lý tưởng:</strong> Tháng 12 - Tháng 3</p>
+            <p><strong>Mô tả:</strong> Đây là mô tả chi tiết về tour, bao gồm tất cả các điểm nổi bật và thông tin quan trọng.</p>
+            <p><strong>Đã bao gồm:</strong> Phương tiện di chuyển, Chỗ ở, Bữa ăn</p>
+            <p><strong>Chưa bao gồm:</strong> Chi phí cá nhân, Bảo hiểm</p>
+            <p><strong>Phương tiện:</strong> Ô tô, Máy bay, Tàu hoả, Tàu thuỷ</p>
+            <div class="btn btn-primary">Sửa thông tin</div>
+          </div>
+        </div>
+        </div>
+      </div>
     </section>
+
 
   </main><!-- End #main -->
 
