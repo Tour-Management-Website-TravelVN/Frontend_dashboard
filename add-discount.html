@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Chi tiết tour</title>
+  <title>Thêm chương trình giảm giá</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -387,226 +387,78 @@
 
   </aside><!-- End Sidebar-->
 
-  <main id="main" class="main ">
+  <main id="main" class="main">
 
     <div class="pagetitle d-flex">
-      <h1>Chi tiết tour</h1>
+      <h1>Thêm mới chương trình giảm giá</h1>
       <nav class="ms-auto">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
-          <li class="breadcrumb-item">Quản lý tour</li>
-          <li class="breadcrumb-item active">Chi tiết tour</li>
+          <li class="breadcrumb-item">Chương trình giảm giá</li>
+          <li class="breadcrumb-item active">Thêm chương trình giảm giá</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
-        <div class="col-md-3 col-lg-">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Hình ảnh</h5>
-              <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                  <img src="assets/img/chi-phi-di-da-lat-1.jpeg" class="img-fluid" alt="...">
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <img src="assets/img/chi-phi-di-da-lat-6.jpg" class="img-fluid" alt="...">
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <img src="assets/img/481088087_959148229729702_4478781852400038459_n.jpg" class="img-fluid" alt="...">
-                </a>
-              </div>
+        <div class="col">
+<!-- ...existing code... -->
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Nhập thông tin </h5>
+
+    <!-- General Form Elements -->
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="discountId" placeholder="Mã chương trình giảm giá">
+            <label for="tourId">Mã chương trình giảm giá</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="discountValue" placeholder="Giá trị">
+            <label for="discountValue">Giá trị giảm giá</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="tourName" placeholder="Tên chương trình giảm giá">
+        <label for="discountName">Tên chương trình giảm giá</label>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="form-floating">
+        <input type="text" class="form-control" id="discountUnit" placeholder="Đơn vị giảm giá">
+        <label for="discountUnit">Đơn vị</label>
+        </div>
+      </div>
+     
+      <div class="row mb-3 d-flex mt-3">
+        <div class="col ms-auto">
+          <a href="Discount-management.html" class="btn btn-danger text-light">Huỷ bỏ</a>
+        </div>
+        <div class="col-sm-2 ms-auto">
+          <button type="submit" class="btn btn-primary">Thêm mới</button>
+        </div>
+      </div>
+    </form><!-- End General Form Elements -->
+  </div>
+</div>
+<!-- ...existing code... -->
+              </form><!-- End General Form Elements -->
+
             </div>
           </div>
-        </div>
-        <div class="col-md-9">
-          <div class="card">
-          <div class="card-body">
-            <div class="row">
-            <h5 class="card-title col-md-4 ms-2">Thông tin tour</h5>
-            <a href="edit-tour.html" onclick="openForm()" class="fw-bold col-md-1 mt-3 ms-auto text-end fs-3"> 
-              <i class="bi bi-gear-fill text-warning"></i>
-            </a>
-          </div>
-            <div class="row lh-sm">
-              <div class="col-md-7">
-            <p><strong>Mã tour:</strong> T001-00001-3N2Đ</p>
-            <p><strong>Tên:</strong> Đà Lạt 3 Ngày 2 Đêm</p>
-            <p><strong>Thể loại tour:</strong> Ô tô, Máy bay, Tàu hoả, Tàu thuỷ</p>
-            <p><strong>Thời gian lý tưởng:</strong> Tháng 12 - Tháng 3</p>
-          </div> <div class="col-md-5">
-            <p><strong>Thời lượng:</strong> 3 Ngày 2 Đêm</p>
-            <p><strong>Giá:</strong> 3.000.000 VND</p>
-            <p><strong>Khởi hành:</strong> Hà Nội</p>
-            <p><strong>Mã người điều hành:</strong>1</p>
-          </div>
-          </div class="row">
-            <p><strong>Điểm tham quan:</strong> Hồ Xuân Hương, Thung Lũng Tình Yêu, Đồi Mộng Mơ</p>
-            <p><strong>Ẩm thực:</strong> Phương tiện di chuyển, Chỗ ở, Bữa ăn</p>
-            <p><strong>Đã bao gồm:</strong> Phương tiện di chuyển, Chỗ ở, Bữa ăn</p>
-            <p><strong>Chưa bao gồm:</strong> Chi phí cá nhân, Bảo hiểm</p>
-            <p><strong>Phương tiện:</strong> Ô tô, Máy bay, Tàu hoả, Tàu thuỷ</p>
-            <p><strong>Mô tả:</strong> Đây là mô tả chi tiết về tour, bao gồm tất cả các điểm nổi bật và thông tin quan trọng.</p>
-          </div>
-        </div>
 
         </div>
-        
-      </div>
-      <div class="row">
-        <div class="card">
-        <div class="card-body">
-          <div class="row">
-          <h5 class="card-title col ms-3">Chương trình tour</h5>
-         <a href="add-tourprogram.html" class="col-md-1 mt-2 text-end fs-3"> <i class="bi bi-calendar2-plus"></i>
-         </a>
-        </div>
-          <table class="table table-sm table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Địa điểm</th>
-                <th scope="col">Ngày</th>
-                <th scope="col">Món ăn</th>
-                <th scope="col">Mô tả</th>
-                <th scope="col">Tuỳ chọn</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Brandon Jacob</td>
-                <td>Designer</td>
-                <td>28</td>
-                <td></td>
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                
-                <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Bridie Kessler</td>
-                <td>Developer</td>
-                <td>35</td>
-                <td></td>
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                
-                <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Ashleigh Langosh</td>
-                <td>Finance</td>
-                <td>45</td>
-                <td></td>
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                
-                <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Angus Grady</td>
-                <td>HR</td>
-                <td>34</td>
-                <td></td>
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                
-                <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Raheem Lehner</td>
-                <td>Dynamic Division Officer</td>
-                <td>47</td>
-                <td></td>
-        
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Raheem Lehner</td>
-                <td>Dynamic Division Officer</td>
-                <td>47</td>
-                <td></td>
-        
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Raheem Lehner</td>
-                <td>Dynamic Division Officer</td>
-                <td>47</td>
-                <td></td>
-        
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Raheem Lehner</td>
-                <td>Dynamic Division Officer</td>
-                <td>47</td>
-                <td></td>
-        
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Raheem Lehner</td>
-                <td>Dynamic Division Officer</td>
-                <td>47</td>
-                <td></td>
-        
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
-                </a></td>
-              </tr>
-             
-            </tbody>
-           
-          </table>
-          <div class="d-flex rows">
-          <a href="Tour_unit_management.html" class="fw-bold text-end col"> Quản lý các đơn vị tour <i class="bi-arrow-right"></i></a>
-          <!-- End small tables -->
-        </div>
-        </div>
-      </div>
 
-        </div>
+        
       </div>
     </section>
-    
-    
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -634,6 +486,22 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script>
+    // Khởi tạo Quill Editor cho "Đã bao gồm"
+    var quillIncluded = new Quill('#quill-included', {
+      theme: 'snow'
+    });
+  
+    // Khởi tạo Quill Editor cho "Chưa bao gồm"
+    var quillNotIncluded = new Quill('#quill-not-included', {
+      theme: 'snow'
+    });
+  
+    // Khởi tạo Quill Editor cho "Mô tả"
+    var quillDescription = new Quill('#quill-description', {
+      theme: 'snow'
+    });
+  </script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 

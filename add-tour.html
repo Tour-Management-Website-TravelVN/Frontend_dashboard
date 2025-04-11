@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Quản lý khách hàng</title>
+  <title>Thêm tour mới</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,8 +40,8 @@
 
 <body>
 
-<!-- ======= Header ======= -->
-<header id="header" class="header fixed-top d-flex align-items-center">
+ <!-- ======= Header ======= -->
+ <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
     <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
@@ -286,8 +286,8 @@
 
 </header><!-- End Header -->
 
-   <!-- ======= Sidebar ======= -->
-   <aside id="sidebar " class="sidebar">
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar " class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -390,52 +390,147 @@
   <main id="main" class="main">
 
     <div class="pagetitle d-flex">
-      <h1>Danh sách khách hàng</h1>
+      <h1>Thêm mới tour</h1>
       <nav class="ms-auto">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><i class="bi bi-house-door"></i></a></li>
-          <li class="breadcrumb-item">Quản lý khách hàng</li>
+          <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item">Quản lý tour</li>
+          <li class="breadcrumb-item active">Thêm tour mới</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
-      <div class="container mt-4">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="tourUnitSelect" class="form-label"><strong>Chọn mã đơn vị tour:</strong></label>
-            <select id="tourUnitSelect" class="form-select">
-              <option value="" selected disabled>Chọn mã đơn vị tour</option>
-              <option value="T001">T001 - Đơn vị A</option>
-              <option value="T002">T002 - Đơn vị B</option>
-              <option value="T003">T003 - Đơn vị C</option>
-            </select>
+      <div class="row">
+        <div class="col">
+<!-- ...existing code... -->
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Nhập thông tin cho tour mới</h5>
+
+    <!-- General Form Elements -->
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="tourId" placeholder="Mã tour">
+            <label for="tourId">Mã tour</label>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input class="form-control" type="file" id="tourImage" placeholder="Ảnh">
+            <label for="tourImage">Ảnh</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="tourName" placeholder="Tên tour">
+        <label for="tourName">Tên tour</label>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="form-floating">
+        <input type="text" class="form-control" id="tourDuration" placeholder="Thời lượng tour">
+        <label for="tourDuration">Thời lượng tour</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="tourDeparture" placeholder="Nơi khởi hành">
+        <label for="tourDeparture">Nơi khởi hành</label>
+      </div>
+    </div>
+    </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="tourAttractions" placeholder="Điểm tham quan">
+        <label for="tourAttractions">Điểm tham quan</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="tourTarget" placeholder="Đối tượng nhắm tới">
+        <label for="tourTarget">Đối tượng nhắm tới</label>
+     
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="form-floating">
+        <input type="text" class="form-control" id="tourIdealTime" placeholder="Thời điểm lý tưởng">
+        <label for="tourIdealTime">Thời điểm lý tưởng</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="idCategory" placeholder="Mã thể loại">
+        <label for="idCategory">Mã thể loại</label>
+      </div>
+    </div>
+    </div>
+      <div class="form-floating mb-3">
+        <div class="card pt-3">
+          <div class="card-body">
+            <label for="quill-included">Đã bao gồm</label>
+            <div id="quill-included" class="quill-editor-full"></div>
+          </div>
+        </div>
+      </div>
       
-        <div class="row mt-4">
-          <div class="col-md-12">
-            <h5>Danh sách khách hàng</h5>
-            <table class="table datatable table-striped fs-6" style="">
-              <thead>
-                <tr>
-                  <th>Họ</th>
-                  <th>Tên</th>
-                  <th>Ngày sinh</th>
-                  <th>Giới tính</th>
-                  <th>Quốc tịch</th>
-                  <th>Số căn cước/Passport</th>
-                  <th>Số điện thoại</th>
-                  <th>Ghi chú</th>
-                  <th>Lựa chọn</th>
-                </tr>
-              </thead>
-              <tbody id="customerList">
-                <!-- Danh sách khách hàng sẽ được hiển thị ở đây -->
-              </tbody>
-            </table>
+      <div class="form-floating mb-3">
+        <div class="card pt-3">
+          <div class="card-body">
+            <label for="quill-not-included">Chưa bao gồm</label>
+            <div id="quill-not-included" class="quill-editor-full"></div>
           </div>
         </div>
+      </div>
+      <div class="form-floating mb-3">
+        <div class="card pt-3">
+          <div class="card-body">
+            <label for="quill-description">Mô tả</label>
+            <div id="quill-description" class="quill-editor-full"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Phương tiện</legend>
+        <div class="col-sm-10">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="vehicleCar">
+            <label class="form-check-label" for="vehicleCar">Ô tô</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="vehiclePlane" checked>
+            <label class="form-check-label" for="vehiclePlane">Máy bay</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="vehicleTrain" checked>
+            <label class="form-check-label" for="vehicleTrain">Tàu hoả</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="vehicleShip" checked>
+            <label class="form-check-label" for="vehicleShip">Tàu thuỷ</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3 d-flex">
+        <div class="col ms-auto">
+          <a href="Tour_management.html" class="btn btn-danger text-light">Huỷ bỏ</a>
+        </div>
+        <div class="col-sm-2 ms-auto">
+          <button type="submit" class="btn btn-primary">Thêm tour mới</button>
+        </div>
+      </div>
+    </form><!-- End General Form Elements -->
+  </div>
+</div>
+<!-- ...existing code... -->
+              </form><!-- End General Form Elements -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
       </div>
     </section>
 
@@ -466,7 +561,22 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script>
+    // Khởi tạo Quill Editor cho "Đã bao gồm"
+    var quillIncluded = new Quill('#quill-included', {
+      theme: 'snow'
+    });
+  
+    // Khởi tạo Quill Editor cho "Chưa bao gồm"
+    var quillNotIncluded = new Quill('#quill-not-included', {
+      theme: 'snow'
+    });
+  
+    // Khởi tạo Quill Editor cho "Mô tả"
+    var quillDescription = new Quill('#quill-description', {
+      theme: 'snow'
+    });
+  </script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
