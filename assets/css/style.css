@@ -1248,3 +1248,7 @@ a{
 a:hover {
   transform: scale(1.05);
 }
+
+.text-justify{
+  text-align: justify;
+}

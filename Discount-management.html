@@ -10,12 +10,15 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="resources/Logo.svg" rel="icon">
+  <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,251 +43,251 @@
 
 <body>
 
- <!-- ======= Header ======= -->
- <header id="header" class="header fixed-top d-flex align-items-center">
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-  <div class="d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
-      <img src="resources/Asset 2.svg" alt="" style="height: 100px; width: 40px;" >
-      <span class="d-none d-lg-block">TravelVN</span>
-    </a>
-  </div><!-- End Logo -->
-  <i class="bi bi-list toggle-sidebar-btn"></i>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
+        <img src="resources/Asset 2.svg" alt="" style="height: 100px; width: 40px;">
+        <span class="d-none d-lg-block">TravelVN</span>
+      </a>
+    </div><!-- End Logo -->
+    <i class="bi bi-list toggle-sidebar-btn"></i>
 
-  <div class="search-bar">
-    <script>
-       async function getData() {
-        query = document.getElementById("name").value;
-                    const url = "http://localhost:8083/user/List-with-multiple-searching-columns?pageNo=0&pageSize=10&search=firstName:"+query;;
-                    try {
-                      const response = await fetch(url);
-                      if (!response.ok) {
-                        throw new Error(`Response status: ${response.status}`);
-                      }
+    <div class="search-bar">
+      <script>
+        async function getData() {
+          query = document.getElementById("name").value;
+          const url = "http://localhost:8083/user/List-with-multiple-searching-columns?pageNo=0&pageSize=10&search=firstName:" + query;;
+          try {
+            const response = await fetch(url);
+            if (!response.ok) {
+              throw new Error(`Response status: ${response.status}`);
+            }
 
-                      const json = await response.json();
-                      console.log(json);
-                    } catch (error) {
-                      console.error(error.message);
-                    }
-                  }
-    </script>
-    <form class="search-form d-flex align-items-center" method="GET" action="#">
-      <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword" id="name">
-      <button type="submit" title="Search"><i class="bi bi-search" onclick=getData()></i></button>
-    </form>
-  </div><!-- End Search Bar -->
+            const json = await response.json();
+            console.log(json);
+          } catch (error) {
+            console.error(error.message);
+          }
+        }
+      </script>
+      <form class="search-form d-flex align-items-center" method="GET" action="#">
+        <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword" id="name">
+        <button type="submit" title="Search"><i class="bi bi-search" onclick=getData()></i></button>
+      </form>
+    </div><!-- End Search Bar -->
 
-  <nav class="header-nav ms-auto">
-    <ul class="d-flex align-items-center">
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
 
-      <li class="nav-item d-block d-lg-none">
-        <a class="nav-link nav-icon search-bar-toggle " href="#">
-          <i class="bi bi-search"></i>
-        </a>
-      </li><!-- End Search Icon-->
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
 
-      <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
 
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-          <i class="bi bi-bell"></i>
-          <span class="badge bg-primary badge-number">4</span>
-        </a><!-- End Notification Icon -->
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
 
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-          <li class="dropdown-header">
-            You have 4 new notifications
-            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-          <li class="notification-item">
-            <i class="bi bi-exclamation-circle text-warning"></i>
-            <div>
-              <h4>Lorem Ipsum</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>30 min. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-x-circle text-danger"></i>
-            <div>
-              <h4>Atque rerum nesciunt</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>1 hr. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-check-circle text-success"></i>
-            <div>
-              <h4>Sit rerum fuga</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>2 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-info-circle text-primary"></i>
-            <div>
-              <h4>Dicta reprehenderit</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>4 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li class="dropdown-footer">
-            <a href="#">Show all notifications</a>
-          </li>
-
-        </ul><!-- End Notification Dropdown Items -->
-
-      </li><!-- End Notification Nav -->
-
-      <li class="nav-item dropdown">
-
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-          <i class="bi bi-chat-left-text"></i>
-          <span class="badge bg-success badge-number">3</span>
-        </a><!-- End Messages Icon -->
-
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-          <li class="dropdown-header">
-            You have 3 new messages
-            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="message-item">
-            <a href="#">
-              <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
               <div>
-                <h4>Maria Hudson</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
                 <p>4 hrs. ago</p>
               </div>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+            </li>
 
-          <li class="message-item">
-            <a href="#">
-              <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-              <div>
-                <h4>Anna Nelson</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>6 hrs. ago</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
 
-          <li class="message-item">
-            <a href="#">
-              <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-              <div>
-                <h4>David Muldon</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>8 hrs. ago</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+          </ul><!-- End Notification Dropdown Items -->
 
-          <li class="dropdown-footer">
-            <a href="#">Show all messages</a>
-          </li>
+        </li><!-- End Notification Nav -->
 
-        </ul><!-- End Messages Dropdown Items -->
+        <li class="nav-item dropdown">
 
-      </li><!-- End Messages Nav -->
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
 
-      <li class="nav-item dropdown pe-3">
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2">Kiều Đức Thịnh</span>
-        </a><!-- End Profile Iamge Icon -->
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-          <li class="dropdown-header">
-            <h6>Kiều Đức Thịnh</h6>
-            <span>Business analyst</span>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-              <i class="bi bi-person"></i>
-              <span>Hồ sơ cá nhân</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-              <i class="bi bi-gear"></i>
-              <span>Cài đặt tài khoản</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
 
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-              <i class="bi bi-question-circle"></i>
-              <span>Trợ giúp</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
+          </ul><!-- End Messages Dropdown Items -->
 
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Đăng xuất</span>
-            </a>
-          </li>
+        </li><!-- End Messages Nav -->
 
-        </ul><!-- End Profile Dropdown Items -->
-      </li><!-- End Profile Nav -->
+        <li class="nav-item dropdown pe-3">
 
-    </ul>
-  </nav><!-- End Icons Navigation -->
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Kiều Đức Thịnh</span>
+          </a><!-- End Profile Iamge Icon -->
 
-</header><!-- End Header -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kiều Đức Thịnh</h6>
+              <span>Business analyst</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Hồ sơ cá nhân</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Cài đặt tài khoản</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Trợ giúp</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Đăng xuất</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar " class="sidebar">
@@ -299,45 +302,45 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="Tour_management.html">
+        <a class="nav-link collapsed" href="Tour_management.html">
           <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý tour</span>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>Table general</span>
-            </a>
-          </li>
-          <li>
-            <a href="Tour_unit_management.html">
-              <i class="bi bi-circle"></i><span>Danh sách tour</span>
-            </a>
-          </li>
-        </ul>
+          <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="tables-general.html">
+                <i class="bi bi-circle"></i><span>Table general</span>
+              </a>
+            </li>
+            <li>
+              <a href="Tour_unit_management.html">
+                <i class="bi bi-circle"></i><span>Danh sách tour</span>
+              </a>
+            </li>
+          </ul>
       </li><!-- End Tables Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Festival_management.html">
           <i class="bi bi-flower1"></i>
 
-    <span>Quản lý lễ hội</span>
+          <span>Quản lý lễ hội</span>
         </a>
       </li><!-- End Charts Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Discount-management.html">
           <i class="bi bi-coin"></i>
 
-    <span>Chương trình giảm giá</span>
+          <span>Chương trình giảm giá</span>
         </a>
       </li><!-- End Charts Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" href="tour_guide_management.html">
           <i class="bi bi-flag-fill"></i>
 
-    <span>Hướng dẫn viên</span>
+          <span>Hướng dẫn viên</span>
         </a>
       </li><!-- End Charts Nav -->
 
-      
+
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" href="approve_request_cancel_booking.html">
           <i class="bi bi-card-checklist"></i>
@@ -400,15 +403,247 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-      <a href="add-discount.html" class="btn btn-success mb-2"> <i class="bi bi-plus-circle"></i>
-        Thêm mới </a>
+      <!-- <a href="add-discount.html" class="btn btn-success mb-2"> <i class="bi bi-plus-circle"></i>
+        Thêm mới </a> -->
       <div class="row">
         <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">
+              <div class="d-flex mt-3">
+                <!-- <div class="btn btn-info fw-bold me-2 ms-auto text-white"> <i class="bi bi-eye-fill"></i>
+                  Sửa hiển thị </div> -->
+                <div class="btn btn-success fw-bold me-2 ms-auto" data-bs-toggle="modal" data-bs-target="#addDis"> <i
+                    class="bi bi-plus-circle-fill"></i>
+                  Thêm giảm giá </div>
+              </div>
               <!-- Table with stripped rows -->
-              <table class="table datatable table-striped fs-6">
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">ID</th>
+                    <th style="width: 50%;">Chương trình giảm giá</th>
+                    <th style="width: 20%;">Giá trị</th>
+                    <!-- <th style="width: 10%;">Đơn vị</th> -->
+                    <!-- <th data-type="date" data-format="YYYY/DD/MM">Start Date</th> -->
+                    <th style="width: 10%;">Tùy chọn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Giảm giá 50%</td>
+                    <td align="center" class="text-justify">
+                      50%</td>
+                    <!-- <td align="center">
+                      %
+                    </td> -->
+                    <td class="d-flex justify-content-evenly" data-order="null" data-search="null">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#updateDis"><i class="bi bi-pencil-fill"></i></button>
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill"></i></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Giảm giá 10%</td>
+                    <td align="center" class="text-justify">
+                      10%</td>
+                    <!-- <td align="center">
+                      %
+                    </td> -->
+                    <td class="d-flex justify-content-evenly">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#updateDis"><i class="bi bi-pencil-fill"></i></button>
+                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Modal Add Fes-->
+              <div class="modal fade" id="addDis" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md modal-dialog-centered">
+                  <div class="modal-content py-4 px-3 rounded-5">
+                    <div class="modal-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="text-success fw-bold">Thêm chương trình giảm giá</h3>
+                        <button class="btn-close fs-2" data-bs-dismiss="modal"></button>
+                      </div>
+                      <hr>
+
+                      <form class="needs-validation">
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" id="floatingInput">
+                          <label>Tên chương trình giảm giá</label>
+                        </div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+
+                        <div class="row">
+
+                          <div class="col">
+                            <div class="form-floating mb-3">
+                              <input type="number" class="form-control" id="floatingInput">
+                              <label for="floatingInput">Giá trị</label>
+                            </div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+                          <div class="col-auto text-center position-relative">
+                            <div class="form-floating">
+                              <select class="form-select" id="floatingSelect"
+                                aria-label="Floating label select example">
+                                <option value="VND" selected>VND</option>
+                                <option value="%">%</option>
+                              </select>
+                              <label for="floatingSelect">Đơn vị</label>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                          <button type="button" class="btn btn-danger me-1" style="width: 30%;"
+                            data-bs-dismiss="modal">Hủy</button>
+                          <button type="button" class="btn btn-success ms-1" style="width: 30%;">Thêm</button>
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal Update Fes-->
+              <div class="modal" id="updateDis" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-md modal-dialog-centered">
+                  <div class="modal-content py-4 px-3 rounded-5">
+                    <div class="modal-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="text-primary fw-bold">Sửa chương trình giảm giá</h3>
+                        <button class="btn-close fs-2" data-bs-dismiss="modal"></button>
+                      </div>
+                      <hr>
+
+                      <form class="needs-validation">
+
+                        <div class="row">
+                          <div class="col-2">
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control border-0 ms-1" id="floatingInput" value="1"
+                                readonly>
+                              <label>Mã</label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-floating mb-3">
+                              <input type="text" class="form-control" id="floatingInput">
+                              <label>Tên chương trình giảm giá</label>
+                            </div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+                        </div>
+
+
+                        <div class="row">
+
+                          <div class="col">
+                            <div class="form-floating mb-3">
+                              <input type="number" class="form-control" id="floatingInput">
+                              <label for="floatingInput">Giá trị</label>
+                            </div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+                          <div class="col-auto text-center position-relative">
+                            <div class="form-floating">
+                              <select class="form-select" id="floatingSelect"
+                                aria-label="Floating label select example">
+                                <option value="VND" selected>VND</option>
+                                <option value="%">%</option>
+                              </select>
+                              <label for="floatingSelect">Đơn vị</label>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                          <button type="button" class="btn btn-danger me-1" style="width: 30%;"
+                            data-bs-dismiss="modal">Hủy</button>
+                          <button type="button" class="btn btn-primary ms-1" style="width: 30%;">Sửa</button>
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title text-danger fw-bold fs-4" id="staticBackdropLabel">Xác nhận xóa</h5>
+                      <button type="button" class="btn-close fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Bạn có muốn xóa &lt;Tên chương trình giảm giá&gt;?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                      <button type="button" class="btn btn-primary">Xác nhận</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <script>
+                document.addEventListener("DOMContentLoaded", function () {
+
+                  /**
+                   * Easy selector helper function
+                   */
+                  const select = (el, all = false) => {
+                    el = el.trim()
+                    if (all) {
+                      return [...document.querySelectorAll(el)]
+                    } else {
+                      return document.querySelector(el)
+                    }
+                  };
+                  /**
+ * Initiate Datatables
+ */
+                  const datatables = select('.datatable', true)
+                  datatables.forEach(datatable => {
+                    new simpleDatatables.DataTable(datatable, {
+                      perPageSelect: [5, 10, 15, ["All", -1]],
+                      columns: [{
+                        select: 2,
+                        sortSequence: ["desc", "asc"]
+                      }
+                      // ,
+                      // {
+                      //   select: 3,
+                      //   sortSequence: ["desc", "asc"]
+                      // },
+                      // {
+                      //   select: 4,
+                      //   cellClass: "green",
+                      //   headerClass: "red"
+                      // }
+                      ]
+                    });
+                  })
+                })
+              </script> -->
+
+              <!-- <table class="table datatable table-striped fs-6">
                 <thead>
                  
                   <tr>
@@ -1182,7 +1417,7 @@
                     <td>31%</td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
               <!-- End Table with stripped rows -->
 
             </div>
@@ -1208,7 +1443,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>

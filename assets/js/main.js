@@ -291,13 +291,14 @@
         },
         {
           select: 3,
-          sortSequence: ["desc"]
-        },
-        {
-          select: 4,
-          cellClass: "green",
-          headerClass: "red"
+          sortSequence: ["desc", "asc"]
         }
+        // ,
+        // {
+        //   select: 4,
+        //   cellClass: "green",
+        //   headerClass: "red"
+        // }
       ]
     });
   })
