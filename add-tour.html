@@ -52,23 +52,6 @@
   <i class="bi bi-list toggle-sidebar-btn"></i>
 
   <div class="search-bar">
-    <script>
-       async function getData() {
-        query = document.getElementById("name").value;
-                    const url = "http://localhost:8083/user/List-with-multiple-searching-columns?pageNo=0&pageSize=10&search=firstName:"+query;;
-                    try {
-                      const response = await fetch(url);
-                      if (!response.ok) {
-                        throw new Error(`Response status: ${response.status}`);
-                      }
-
-                      const json = await response.json();
-                      console.log(json);
-                    } catch (error) {
-                      console.error(error.message);
-                    }
-                  }
-    </script>
     <form class="search-form d-flex align-items-center" method="GET" action="#">
       <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword" id="name">
       <button type="submit" title="Search"><i class="bi bi-search" onclick=getData()></i></button>
@@ -409,7 +392,7 @@
     <h5 class="card-title">Nhập thông tin cho tour mới</h5>
 
     <!-- General Form Elements -->
-    <form>
+    <form action="" method="post" enctype="multipart/form-data">
       <div class="row mb-3">
         <div class="col-md-6">
           <div class="form-floating">
@@ -460,16 +443,21 @@
       </div>
       <div class="col-md-6">
       <div class="form-floating">
-        <input type="text" class="form-control" id="idCategory" placeholder="Mã thể loại">
-        <label for="idCategory">Mã thể loại</label>
+        <select class="form-control form-control-sm fw-bold" id="type">
+          <option>Small select</option>
+          <option>Small select</option>
+          <option>Small select</option> 
+        </select>        
+        <label for="idCategory">Thể loại</label>
       </div>
     </div>
     </div>
       <div class="form-floating mb-3">
         <div class="card pt-3">
           <div class="card-body">
-            <label for="quill-included">Đã bao gồm</label>
-            <div id="quill-included" class="quill-editor-full"></div>
+            <label for="included">Đã bao gồm</label>
+            <div id="included" class="quill-editor-full"></div>
+            <input type="hidden" name="Included" id="Included">
           </div>
         </div>
       </div>
@@ -477,16 +465,20 @@
       <div class="form-floating mb-3">
         <div class="card pt-3">
           <div class="card-body">
-            <label for="quill-not-included">Chưa bao gồm</label>
-            <div id="quill-not-included" class="quill-editor-full"></div>
+            <label for="not-included">Chưa bao gồm</label>
+            <div id="not-included" class="quill-editor-full"></div>
+            <input type="hidden" name="notIncludedContent" id="notIncluded">
+
           </div>
         </div>
       </div>
       <div class="form-floating mb-3">
         <div class="card pt-3">
           <div class="card-body">
-            <label for="quill-description">Mô tả</label>
-            <div id="quill-description" class="quill-editor-full"></div>
+            <label for="description">Mô tả</label>
+            <div id="description" class="quill-editor-full"></div>
+            <input type="hidden" name="Description" id="Description">
+
           </div>
         </div>
       </div>
@@ -563,19 +555,28 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script>
     // Khởi tạo Quill Editor cho "Đã bao gồm"
-    var quillIncluded = new Quill('#quill-included', {
+    var quillIncluded = new Quill('#included', {
       theme: 'snow'
     });
-  
     // Khởi tạo Quill Editor cho "Chưa bao gồm"
-    var quillNotIncluded = new Quill('#quill-not-included', {
+    var quillNotIncluded = new Quill('#not-included', {
       theme: 'snow'
     });
-  
     // Khởi tạo Quill Editor cho "Mô tả"
-    var quillDescription = new Quill('#quill-description', {
+    var quillDescription = new Quill('#description', {
       theme: 'snow'
     });
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+    document.getElementById('notIncluded').value = quillNotIncluded.root.innerHTML;
+  });
+  document.querySelector('form').addEventListener('submit', function (e) {
+    document.getElementById('Included').value = quillIncluded.root.innerHTML;
+  });
+  document.querySelector('form').addEventListener('submit', function (e) {
+    document.getElementById('Description').value = quillDescription.root.innerHTML;
+  });
+
   </script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
