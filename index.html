@@ -44,25 +44,6 @@
  <!-- ======= Header ======= -->
  <header id="header" class="header fixed-top d-flex align-items-center">
 
-<<<<<<< HEAD
-  <div class="d-flex align-items-center justify-content-between">
-    <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
-      <img src="resources/Asset 2.svg" alt="" style="height: 100px; width: 40px;" >
-      <span class="d-none d-lg-block">TravelVN</span>
-    </a>
-  </div><!-- End Logo -->
-  <i class="bi bi-list toggle-sidebar-btn"></i>
-
-  <div class="search-bar">
-    <script>
-       async function getData() {
-        query = document.getElementById("name").value;
-                    const url = "http://localhost:8083/user/List-with-multiple-searching-columns?pageNo=0&pageSize=10&search=firstName:"+query;;
-                    try {
-                      const response = await fetch(url);
-                      if (!response.ok) {
-                        throw new Error(`Response status: ${response.status}`);
-=======
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
         <img src="resources/Asset 2.svg" alt="" class="w-35">
@@ -86,14 +67,8 @@
                         console.log(json);
                       } catch (error) {
                         console.error(error.message);
->>>>>>> MQFrontend_dashboard
                       }
 
-                      const json = await response.json();
-                      console.log(json);
-                    } catch (error) {
-                      console.error(error.message);
-                    }
                   }
     </script>
     <form class="search-form d-flex align-items-center" method="GET" action="#">
