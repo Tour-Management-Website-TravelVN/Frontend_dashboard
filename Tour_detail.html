@@ -461,8 +461,26 @@
           <h5 class="card-title col ms-3">Chương trình tour</h5>
          <a href="add-tourprogram.html" class="col-md-1 mt-2 text-end fs-3"> <i class="bi bi-calendar2-plus"></i>
          </a>
+          <div class="modal" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title text-danger fw-bold fs-4" id="staticBackdropLabel">Xác nhận xóa</h5>
+                      <button type="button" class="btn-close fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Bạn có muốn xóa &lt;Tên chương trình tour&gt;?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                      <button type="button" class="btn btn-primary">Xác nhận</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
-          <table class="table table-sm table-striped">
+          <table class="table datatable table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -480,12 +498,14 @@
                 <td>Designer</td>
                 <td>28</td>
                 <td></td>
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                
-                <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
-                </a></td>
+                <td >
+                      <a  href="edit-tourprogram.html" class="btn btn-primary"><i class="bi bi-pencil-fill"></i>
+                      </a>
+                      
+                      <a href="#" class="btn btn-danger" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill" ></i>
+                      </a>
+                    </td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -493,14 +513,16 @@
                 <td>Developer</td>
                 <td>35</td>
                 <td></td>
-                <td class="row">
-                  <a  href="edit-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
-                </a>
-                
-                <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
-                </a></td>
+                <td >
+                      <a  href="edit-tourprogram.html" class="btn btn-primary"><i class="bi bi-pencil-fill"></i>
+                      </a>
+                      
+                      <a href="#" class="btn btn-danger" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill" ></i>
+                      </a>
+                    </td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th scope="row">3</th>
                 <td>Ashleigh Langosh</td>
                 <td>Finance</td>
@@ -590,7 +612,7 @@
                 </a>
                 <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
                 </a></td>
-              </tr>
+              </tr> -->
              
             </tbody>
            
