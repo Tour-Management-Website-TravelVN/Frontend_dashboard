@@ -284,6 +284,11 @@
   const datatables = select('.datatable', true)
   datatables.forEach(datatable => {
     new simpleDatatables.DataTable(datatable, {
+      labels: {
+        info: "Hiển thị {start} đến {end} / {rows} dòng", // Thay đổi văn bản footer
+        noRows: "Không có dữ liệu"  // Thay đổi văn bản khi không có dữ liệu
+      },
+      // footer: true,  // Bật footer
       perPageSelect: [5, 10, 15, ["All", -1]],
       columns: [{
           select: 2,
