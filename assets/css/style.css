@@ -11,6 +11,8 @@
 --------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
+
+  --bs-primary: #012970
 }
 
 body {
@@ -1245,10 +1247,26 @@ a{
   transition: transform 0.4s ease;
 }
 
-a:hover {
+/* a:hover {
   transform: scale(1.05);
-}
+} */
 
 .text-justify{
   text-align: justify;
 }
+
+.text-primary{
+  color: #012970 !important;
+}
+
+.bg-primary{
+  background-color: #012970 !important;
+}
+
+.rotate-45{
+  transform: rotate(45deg);
+  display: inline-block;
+}
+/* .img-mi::after:hover{
+  
+} */

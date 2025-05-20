@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Thêm tour mới</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script type="module" src="assets/js/tour/form-tour.js"></script>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
+        <img src="resources/Asset 2.svg" alt="" style="height: 100px; width: 40px;">
+        <span class="d-none d-lg-block">TravelVN</span>
+      </a>
+    </div><!-- End Logo -->
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+
+    <div class="search-bar">
+      <script>
+        async function getData() {
+          query = document.getElementById("name").value;
+          const url = "http://localhost:8083/user/List-with-multiple-searching-columns?pageNo=0&pageSize=10&search=firstName:" + query;;
+          try {
+            const response = await fetch(url);
+            if (!response.ok) {
+              throw new Error(`Response status: ${response.status}`);
+            }
+
+            const json = await response.json();
+            console.log(json);
+          } catch (error) {
+            console.error(error.message);
+          }
+        }
+      </script>
+      <form class="search-form d-flex align-items-center" method="GET" action="#">
+        <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword" id="name">
+        <button type="submit" title="Search"><i class="bi bi-search" onclick=getData()></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Kiều Đức Thịnh</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kiều Đức Thịnh</h6>
+              <span>Business analyst</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Hồ sơ cá nhân</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Cài đặt tài khoản</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Trợ giúp</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Đăng xuất</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar " class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Tour_management.html">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý tour</span>
+          <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="tables-general.html">
+                <i class="bi bi-circle"></i><span>Table general</span>
+              </a>
+            </li>
+            <li>
+              <a href="Tour_unit_management.html">
+                <i class="bi bi-circle"></i><span>Danh sách tour</span>
+              </a>
+            </li>
+          </ul>
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Festival_management.html">
+          <i class="bi bi-flower1"></i>
+
+          <span>Quản lý lễ hội</span>
+        </a>
+      </li><!-- End Charts Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Discount-management.html">
+          <i class="bi bi-coin"></i>
+
+          <span>Chương trình giảm giá</span>
+        </a>
+      </li><!-- End Charts Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="tour_guide_management.html">
+          <i class="bi bi-flag-fill"></i>
+
+          <span>Hướng dẫn viên</span>
+        </a>
+      </li><!-- End Charts Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="approve_request_cancel_booking.html">
+          <i class="bi bi-card-checklist"></i>
+          <span>Yêu cầu huỷ tour</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Customer_info_management.html">
+          <i class="bi bi-people-fill"></i>
+          <span>Khách hàng</span>
+        </a>
+      </li><!-- End Charts Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Thông tin cá nhân</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-heading">Khác</li>
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>Hướng dẫn sử dụng</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Liên hệ với admin</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-gear"></i>
+          <span>Cài đặt</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle d-flex">
+      <h1>Thêm tour mới</h1>
+      <nav class="ms-auto">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item">Quản lý tour</li>
+          <li class="breadcrumb-item active">Thêm tour mới</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col">
+          <!-- ...existing code... -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Nhập thông tin cho tour mới</h5>
+
+              <!-- General Form Elements -->
+              <form class="needs-validation" id="tourForm" novalidate action="">
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control bg-light" id="tourId" placeholder="Mã tour" readonly>
+                      <label for="tourId">Mã tour</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6  mt-3 mt-md-0">
+                    <div class="form-floating">
+                      <input class="form-control" type="file" id="tourImage" placeholder="Ảnh" multiple
+                        accept="/image/*">
+                      <label for="tourImage">Ảnh</label>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="d-flex overflow-auto gap-3 p-2 border col-12 mb-3" style="height: 250px; width: auto;">
+                  <div class="position-relative" style="min-width: 200px">
+                    <img
+                      src="https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/dataimages/201706/original/images1920558_4053279_16.jpg"
+                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
+                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
+                      <i class="bi bi-x text-white fw-bold fs-5"></i>
+                    </button>
+                  </div>
+
+                  <div class="position-relative" style="min-width: 200px">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s"
+                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
+                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
+                      <i class="bi bi-x text-white fw-bold fs-5"></i>
+                    </button>
+                  </div>
+
+                  <div class="position-relative" style="min-width: 200px">
+                    <img
+                      src="https://cdn-media.sforum.vn/storage/app/media/anh-dep-83.jpg"
+                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
+                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
+                      <i class="bi bi-x text-white fw-bold fs-5"></i>
+                    </button>
+                  </div>
+
+                  <div class="w-100 h100 d-flex align-items-center me-3">
+                    <i class="bi bi-plus-circle text-primary h1"></i>
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="tourName" placeholder="Tên tour" required>
+                  <label for="tourName">Tên tour</label>
+                  <div class="invalid-feedback">Tên tour nằm trong khoảng 15 đến 255 ký tự.</div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="tourDuration" placeholder="Thời lượng tour" required>
+                      <label for="tourDuration">Thời lượng tour (ngày)</label>
+                      <div class="invalid-feedback">Từ 1 đến 60 ngày</div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6 mt-3 mt-md-0">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="tourDeparture" placeholder="Nơi khởi hành" required>
+                      <label for="tourDeparture">Nơi khởi hành</label>
+                      <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="tourAttractions" placeholder="Điểm tham quan" required>
+                  <label for="tourAttractions">Điểm tham quan</label>
+                  <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="tourTarget" placeholder="Đối tượng nhắm tới" required>
+                  <label for="tourTarget">Đối tượng thích hợp</label>
+                  <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
+
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="tourCuisine" placeholder="Ẩm thực" required>
+                  <label for="tourCuisine">Ẩm thực</label>
+                  <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
+
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="tourIdealTime" placeholder="Thời điểm lý tưởng" required>
+                      <label for="tourIdealTime">Thời điểm lý tưởng</label>
+                      <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mt-3 mt-md-0">
+                    <div class="form-floating">
+                      <select class="form-select" id="idCategory" required>
+                        <option value="" selected disabled hidden>Chọn thể loại</option>
+                        <option value="1">Du lịch biển</option>
+                        <option value="2">Du lịch núi</option>
+                        <option value="3">Du lịch văn hóa</option>
+                        <option value="4">Du lịch ẩm thực</option>
+                        <option value="5">Du lịch sinh thái</option>
+                        <option value="6">Du lịch mạo hiểm</option>
+                      </select>
+                      <label for="floatingSelect">Thể loại</label>
+                      <div class="invalid-feedback">Vui lòng chọn thể loại.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-0">
+                  <div class="card pt-3">
+                    <div class="card-body">
+                      <label for="quill-included" class="mb-1">Đã bao gồm</label>
+                      <div id="quill-included"></div>
+                      <div class="invalid-feedback">Độ dài từ 20 ký tự trở lên.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-0">
+                  <div class="card pt-3 mt-0">
+                    <div class="card-body">
+                      <label for="quill-not-included" class="mb-1">Chưa bao gồm</label>
+                      <div id="quill-not-included"></div>
+                      <div class="invalid-feedback">Độ dài từ 20 ký tự trở lên.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-0">
+                  <div class="card pt-3">
+                    <div class="card-body">
+                      <label for="quill-description" class="mb-1">Mô tả</label>
+                      <div id="quill-description"></div>
+                      <div class="invalid-feedback">Độ dài từ 20 ký tự trở lên.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <legend class="col-form-label col-sm-auto pt-0">Phương tiện</legend>
+                  <div class="col-sm-9 ms-0">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="vehicleCar" checked>
+                      <label class="form-check-label" for="vehicleCar">Ô tô</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="vehiclePlane" checked>
+                      <label class="form-check-label" for="vehiclePlane">Máy bay</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="vehicleTrain" checked>
+                      <label class="form-check-label" for="vehicleTrain">Tàu hoả</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="vehicleShip" checked>
+                      <label class="form-check-label" for="vehicleShip">Tàu thuỷ</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3 d-flex justify-content-center justify-content-md-end">
+                  <div class="col-auto">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                      style="width: 150px;">Hủy bỏ</button>
+                  </div>
+                  <div class="col-auto">
+                    <button type="submit" class="btn btn-primary" style="width: 150px;">Thêm tour mới</button>
+                  </div>
+
+                </div>
+
+                <!-- Modal -->
+                <div class="modal" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title text-danger fw-bold fs-4" id="staticBackdropLabel">Xác nhận thoát</h5>
+                        <button type="button" class="btn-close fs-3" data-bs-dismiss="modal"
+                          aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Thông tin tour sẽ không được lưu?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary">Xác nhận</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Chương trình tour</h5>
+              <div class="card">
+                <div class="card-header bg-secondary text-white text-center text-md-start">Ngày <span class="day">1</span></div>
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item pb-4">
+                    <div class="row">
+                      <div class="col-md-8 col-sm-12">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="tourIdealTime" placeholder="Thời điểm lý tưởng">
+                          <label>Địa điểm chương trình</label>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3 col-sm-12 ms-0 meal">
+                        <p class="mb-1 pt-1 ps-1 ms-lg-0 ps-lg-0 ps-md-0 ms-md-0">Bữa ăn</p>
+                        <div class="d-flex justify-content-md-between justify-content-sm-evenly">
+                          <div class="form-check form-check-inline">
+                            <label>
+                              <input class="form-check-input" type="checkbox" value="Sáng" checked>
+                              Sáng
+                            </label>
+
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <label>
+                              <input class="form-check-input" type="checkbox" value="Trưa" checked>
+                              Trưa
+                            </label>
+
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <label>
+                              <input class="form-check-input" type="checkbox" value="Tối" checked>
+                              Tối
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 mt-2 h-100">
+                        <label class="mb-1">Nội dung chương trình</label>
+                        <div class="quill-editor-2"></div>
+                      </div>
+
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+
+              <button id="saveAll" class="btn btn-primary float-end" style="width: 150px;">Lưu</button>
+            </div>
+
+
+          </div>
+
+          </form><!-- End General Form Elements -->
+        </div>
+      </div>
+      <!-- ...existing code... -->
+      </form><!-- End General Form Elements -->
+
+      </div>
+      </div>
+
+      </div>
+
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script>
+    // Khởi tạo Quill Editor cho "Đã bao gồm"
+    var quillIncluded = new Quill('#quill-included', {
+      theme: 'snow'
+    });
+
+    // Khởi tạo Quill Editor cho "Chưa bao gồm"
+    var quillNotIncluded = new Quill('#quill-not-included', {
+      theme: 'snow'
+    });
+
+    // Khởi tạo Quill Editor cho "Mô tả"
+    var quillDescription = new Quill('#quill-description', {
+      theme: 'snow'
+    });
+
+    // Khởi tạo Quill Editor cho "Mô tả"
+    // var quillDescription = new Quill('#quill-description', {
+    //   theme: 'snow'
+    // });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.quill-editor-2').forEach(function (el) {
+        new Quill(el, {
+          modules: {
+            toolbar: [
+              [{ font: [] }, { size: [] }],
+              ['bold', 'italic', 'underline', 'strike'],
+              [{ color: [] }, { background: [] }],
+              [{ script: 'super' }, { script: 'sub' }],
+              [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+              ['direction', { align: [] }],
+              ['link', 'image', 'video'],
+              ['clean']
+            ]
+          },
+          theme: 'snow'
+        });
+      });
+    });
+
+  </script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

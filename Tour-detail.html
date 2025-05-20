@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Chi tiết tour</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/0b7fe90b3a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center" style="height: max-content;">
+        <img src="resources/Asset 2.svg" alt="" style="height: 100px; width: 40px;">
+        <span class="d-none d-lg-block">TravelVN</span>
+      </a>
+    </div><!-- End Logo -->
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+
+    <div class="search-bar">
+      <script>
+        async function getData() {
+          query = document.getElementById("name").value;
+          const url = "http://localhost:8083/user/List-with-multiple-searching-columns?pageNo=0&pageSize=10&search=firstName:" + query;;
+          try {
+            const response = await fetch(url);
+            if (!response.ok) {
+              throw new Error(`Response status: ${response.status}`);
+            }
+
+            const json = await response.json();
+            console.log(json);
+          } catch (error) {
+            console.error(error.message);
+          }
+        }
+      </script>
+      <form class="search-form d-flex align-items-center" method="GET" action="#">
+        <input type="text" name="query" placeholder="Tìm kiếm" title="Enter search keyword" id="name">
+        <button type="submit" title="Search"><i class="bi bi-search" onclick=getData()></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Kiều Đức Thịnh</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kiều Đức Thịnh</h6>
+              <span>Business analyst</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Hồ sơ cá nhân</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Cài đặt tài khoản</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Trợ giúp</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Đăng xuất</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar " class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="Tour_management.html">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý tour</span>
+          <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="tables-general.html">
+                <i class="bi bi-circle"></i><span>Table general</span>
+              </a>
+            </li>
+            <li>
+              <a href="Tour_unit_management.html">
+                <i class="bi bi-circle"></i><span>Danh sách tour</span>
+              </a>
+            </li>
+          </ul>
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Festival_management.html">
+          <i class="bi bi-flower1"></i>
+
+          <span>Quản lý lễ hội</span>
+        </a>
+      </li><!-- End Charts Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Discount-management.html">
+          <i class="bi bi-coin"></i>
+
+          <span>Chương trình giảm giá</span>
+        </a>
+      </li><!-- End Charts Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="tour_guide_management.html">
+          <i class="bi bi-flag-fill"></i>
+
+          <span>Hướng dẫn viên</span>
+        </a>
+      </li><!-- End Charts Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="approve_request_cancel_booking.html">
+          <i class="bi bi-card-checklist"></i>
+          <span>Yêu cầu huỷ tour</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" href="Customer_info_management.html">
+          <i class="bi bi-people-fill"></i>
+          <span>Khách hàng</span>
+        </a>
+      </li><!-- End Charts Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Thông tin cá nhân</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-heading">Khác</li>
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>Hướng dẫn sử dụng</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Liên hệ với admin</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-gear"></i>
+          <span>Cài đặt</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main ">
+
+    <div class="pagetitle d-flex">
+      <h1>Chi tiết tour</h1>
+      <nav class="ms-auto">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item">Quản lý tour</li>
+          <li class="breadcrumb-item active">Chi tiết tour</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body pt-3 pb-0 mb-0">
+              <h5 class="text-primary fw-bold mb-3">Thông tin cơ bản</h5>
+              <div class="row">
+                <div class="col-12 col-md-4">
+
+                  <div class="row">
+                    <div class="col-6 ps-3">
+                      <p class="fw-bold fs-6">Người tạo tour: </p>
+                      <p class="fw-bold fs-6">Thời gian tạo: </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="fw-normal fs-6">Kiều Đức Thịnh</p>
+                      <p class="fw-normal fs-6">18/05/2025 13:23:00</p>
+                    </div>
+                  </div>
+
+                  <!-- <table class="w-100">
+                    <colgroup>
+                      <col style="width: 30%;" />
+                      <col style="width: 70%;" />
+                    </colgroup>
+                    <tr>
+                      <td>
+                        <p class="fw-bold fs-6">Người tạo: </p>
+                      </td>
+                      <td>
+                        <p id="toCreated" class="fw-normal fs-6">Kiều Đức Thịnh</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="fw-bold fs-6">Thời gian tạo: </p>
+                      </td>
+                      <td>
+                        <p id="toCreated" class="fw-normal fs-6">18/05/2025 13:23:00</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="fw-bold fs-6">Người sửa lần cuối: </p>
+                      </td>
+                      <td>
+                        <p id="toCreated" class="fw-normal fs-6">Kiều Đức Thịnh</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p class="fw-bold fs-6">Thời gian sửa: </p>
+                      </td>
+                      <td>
+                        <p id="toCreated" class="fw-normal fs-6">18/05/2025 15:23:00</p>
+                      </td>
+                    </tr>
+                  </table> -->
+                  <!-- <p class="fw-bold">Người tạo: <span id="toCreated" class="fw-normal">Kiều Đức Thịnh</span></p>
+                  <p class="fw-bold">Thời gian tạo: <span id="toCreated" class="fw-normal">Kiều Đức Thịnh</span></p>
+                  <p class="fw-bold">Người tạo: <span id="toCreated" class="fw-normal">Kiều Đức Thịnh</span></p>
+                  <p class="fw-bold">Người tạo: <span id="toCreated" class="fw-normal">Kiều Đức Thịnh</span></p> -->
+                </div>
+
+                <div class="col-12 col-md-4">
+
+                  <div class="row">
+                    <div class="col-6 ps-3">
+                      <p class="fw-bold fs-6">Người sửa lần cuối: </p>
+                      <p class="fw-bold fs-6">Thời gian sửa: </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="fw-normal fs-6">Kiều Đức Thịnh</p>
+                      <p class="fw-normal fs-6">18/05/2025 15:23:00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+
+                  <div class="row">
+                    <div class="col-6 ps-3">
+                      <p class="fw-bold fs-6 text-warning">Số đơn vị tour: </p>
+                    </div>
+                    <div class="col-6">
+                      <p class="fw-normal fs-6 text-warning fw-bold">56</p>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                      <p class="ps-1 pb-1 text-center text-md-start">
+                        <a href="Tour_unit_management.html" class="fw-bold text-end col"> Quản lý các đơn vị tour <i
+                            class="bi-arrow-right"></i></a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between w-100 ms-0 ps-0">
+                <h5 class="card-title d-inline-block ms-0 pb-0">Nha Trang - Tháp Bà Ponagar - Biển Nhũ Tiên - Vinwonder
+                  - Làng gốm Bàu Trúc - Khám phá cao tốc mới - Khách sạn 4 sao</h5>
+                <a href="form-tour.html" class="fw-bold col-md-1 mt-3 ms-auto text-end fs-3 me-5 pe-1">
+                  <i class="bi bi-gear-fill text-warning"></i>
+                </a>
+                <a class=" fw-bold text-danger fw-bold col-md-auto mt-3 ms-0 text-end fs-3" style="cursor: pointer;" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                  <i class="bi bi-trash-fill"></i>
+                </a>
+
+                <!-- Modal -->
+              <div class="modal" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title text-danger fw-bold fs-4" id="staticBackdropLabel">Xác nhận xóa</h5>
+                      <button type="button" class="btn-close fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Bạn có muốn xóa tour này không?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                      <button type="button" class="btn btn-primary">Xác nhận</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                <h5 class="text-primary fw-bold d-block">T001-00001-3N2Đ</h5>
+                <span class="badge text-white bg-primary fs-6">Du lịch mạo hiểm</span>
+              </div>
+
+              <div class="row">
+                <div class="col-6 col-md">
+                  <i class="bi bi-clock-fill me-3"></i>
+                  <p class="d-inline-block">3N2Đ</p>
+                </div>
+                <div class="col-auto col-md-auto">
+                  <i class="bi bi-bus-front-fill text-dark fs-5 me-3"></i>
+                  <i class="bi bi-airplane-fill text-dark rotate-45 fs-5 me-3"></i>
+                  <i class="bi bi-train-freight-front-fill fs-5 me-3"></i>
+                  <i class="fa-solid fa-ship fs-5"></i>
+                </div>
+                <div class="w-100 mt-1"></div>
+                <div class="col-12 col-md d-flex">
+                  <i class="bi bi-geo-alt-fill me-3 pb-2 mb-2 text-dark"></i>
+                  <span class="fw-bold me-2">Điểm đi: </span>
+                  <p class="fs-6 mb-2 text-dark pt-0 pb-2 mb-2" id="departurePlace"><span class="text-dark">TP.
+                      Hồ Chí
+                      Minh</span></p>
+                </div>
+                <div class="col-12 col-md-auto d-flex float-end">
+                  <i class="bi bi-flag-fill me-3 text-dark"></i>
+                  <span class="fw-bold me-2">Điểm đến: </span>
+                  <p class="fs-6 mb-2 text-dark pt-0 pb-2 mb-2" id="placesToVisit"><span class="text-dark">TP. Đà
+                      Nẵng</span></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-4 d-flex flex-column align-items-center">
+                  <i class="bi bi-people-fill text-primary fa-3x pb-0"></i>
+                  <span class="text-primary fw-bold decrease-margin-lg-15">Đối tượng thích hợp</span>
+                  <span class="text-dark fs-6 fw-bold text-center" id="targetAudience">Thanh niên</span>
+                </div>
+                <div class="col-12 col-md-4 d-flex flex-column align-items-center">
+                  <i class="bi bi-flower1 text-primary fa-3x pb-0"></i>
+                  <span class="text-primary fw-bold decrease-margin-lg-15">Ẩm thực</span>
+                  <span class="text-dark fs-6 fw-bold text-center" id="cuisine">Gỏi cá Nam Ô</span>
+                </div>
+                <div class="col-12 col-md-4 d-flex flex-column align-items-center">
+                  <i class="bi bi-clock-fill text-primary fa-3x pb-0"></i>
+                  <span class="text-primary fw-bold decrease-margin-lg-15">Thời gian lý tưởng</span>
+                  <span class="text-dark fs-6 fw-bold text-center" id="idealTime">Quanh năm</span>
+                </div>
+              </div>
+
+              <div class="row mt-1">
+                <div class="col-12">
+                  <h5 class="text-primary fw-bold">Mô tả</h5>
+                  <div class="border-0 w-100">Điểm nhấn khác biệt so với hành trình thông thườngKết nối văn hóa Việt -
+                    Chăm bằng những trải nghiệm văn hóa thực tế với người bản địa, góp phần bảo tồn di sản nghề gốm của
+                    người Chăm.Nghe người Chăm bản địa giới thiệu về Làng gốm Bàu Trúc - nơi linh hồn đất và lửa hòa
+                    quyện cùng văn hóa ChămThưởng thức nhịp trống Paranưng và Ghi Năng rộn ràngKhám phá nghệ thuật làm
+                    gốm không cần bàn xoay, đặc biệt trải nghiệm “vuốt gốm” cùng</div>
+                </div>
+                <div class="col-12 mt-3">
+                  <h5 class="text-primary fw-bold">Tour bao gồm</h5>
+                  <div class="border-0 w-100">Điểm nhấn khác biệt so với hành trình thông thườngKết nối văn hóa Việt -
+                    Chăm bằng những trải nghiệm văn hóa thực tế với người bản địa, góp phần bảo tồn di sản nghề gốm của
+                    người Chăm.Nghe người Chăm bản địa giới thiệu về Làng gốm Bàu Trúc - nơi linh hồn đất và lửa hòa
+                    quyện cùng văn hóa ChămThưởng thức nhịp trống Paranưng và Ghi Năng rộn ràngKhám phá nghệ thuật làm
+                    gốm không cần bàn xoay, đặc biệt trải nghiệm “vuốt gốm” cùng</div>
+                </div>
+                <div class="col-12 mt-3">
+                  <h5 class="text-primary fw-bold">Tour không bao gồm</h5>
+                  <div class="border-0 w-100">Điểm nhấn khác biệt so với hành trình thông thườngKết nối văn hóa Việt -
+                    Chăm bằng những trải nghiệm văn hóa thực tế với người bản địa, góp phần bảo tồn di sản nghề gốm của
+                    người Chăm.Nghe người Chăm bản địa giới thiệu về Làng gốm Bàu Trúc - nơi linh hồn đất và lửa hòa
+                    quyện cùng văn hóa ChămThưởng thức nhịp trống Paranưng và Ghi Năng rộn ràngKhám phá nghệ thuật làm
+                    gốm không cần bàn xoay, đặc biệt trải nghiệm “vuốt gốm” cùng</div>
+                </div>
+              </div>
+
+              <!-- Toast Container -->
+              <!-- <div aria-live="polite" aria-atomic="true" class="bg-body-secondary position-relative rounded-3 p-5">
+                <div class="toast-container position-absolute top-0 end-0 p-3">
+                  <div class="toast" id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <strong class="me-auto">Bootstrap</strong>
+                      <small>just now</small>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                      Hello, world! This is a toast message.
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="toast position-fixed bottom-0 end-0" style="z-index: 999999;" id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <strong class="me-auto text-warning">Thông báo</strong>
+                  <small>Vừa xong</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body bg-white">
+                  Đã cập nhật thông tin tour.
+                </div>
+
+                <!-- Show Toast -->
+                <script>
+                  $(function () {
+                    const toastEl = document.getElementById('myToast');
+                    const toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                  })
+
+                </script>
+
+
+                <!-- <div class="row lh-sm">
+                <div class="col-md-7">
+
+                  <p><strong>Tên:</strong> Đà Lạt 3 Ngày 2 Đêm</p>
+                  <p><strong>Thể loại tour:</strong> Ô tô, Máy bay, Tàu hoả, Tàu thuỷ</p>
+                  <p><strong>Thời gian lý tưởng:</strong> Tháng 12 - Tháng 3</p>
+                </div>
+                <div class="col-md-5">
+                  <p><strong>Thời lượng:</strong> 3 Ngày 2 Đêm</p>
+                  <p><strong>Giá:</strong> 3.000.000 VND</p>
+                  <p><strong>Khởi hành:</strong> Hà Nội</p>
+                  <p><strong>Mã người điều hành:</strong>1</p>
+                </div>
+              </div class="row">-->
+                <!-- <p><strong>Điểm tham quan:</strong> Hồ Xuân Hương, Thung Lũng Tình Yêu, Đồi Mộng Mơ</p>
+              <p><strong>Ẩm thực:</strong> Phương tiện di chuyển, Chỗ ở, Bữa ăn</p>
+              <p><strong>Đã bao gồm:</strong> Phương tiện di chuyển, Chỗ ở, Bữa ăn</p>
+              <p><strong>Chưa bao gồm:</strong> Chi phí cá nhân, Bảo hiểm</p>
+              <p><strong>Phương tiện:</strong> Ô tô, Máy bay, Tàu hoả, Tàu thuỷ</p>
+              <p><strong>Mô tả:</strong> Đây là mô tả chi tiết về tour, bao gồm tất cả các điểm nổi bật và thông tin
+                quan trọng.</p> -->
+              </div>
+            </div>
+
+            <div class="col-md-12 col-lg-12 mb-0">
+              <div class="card">
+                <div class="card-body pb-0">
+                  <h5 class="card-title pb-0">Hình ảnh</h5>
+                  <div class="d-flex overflow-auto gap-3 p-2 col-12 mb-3 px-0" style="height: 250px; width: auto;">
+                    <img src="https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg"
+                      class="img-thumbnail" style="height: 215px; width: auto;" />
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgdQ8s7RFXpX38mHSWaw9lDnwDde3rHqeCPA&s"
+                      class="img-thumbnail" style="height: 215px; width: auto;" />
+                    <img src="https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg"
+                      class="img-thumbnail" style="height: 215px; width: auto;" />
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgdQ8s7RFXpX38mHSWaw9lDnwDde3rHqeCPA&s"
+                      class="img-thumbnail" style="height: 215px; width: auto;" />
+                    <img src="https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645-t.jpg"
+                      class="img-thumbnail" style="height: 215px; width: auto;" />
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgdQ8s7RFXpX38mHSWaw9lDnwDde3rHqeCPA&s"
+                      class="img-thumbnail" style="height: 215px; width: auto;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- </div>
+      <div class="row"> -->
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <!-- Tour Programs Start -->
+
+                <h5 class="text-start text-primary fw-bold mt-4 mb-4">Chương trình
+                  tour</h5>
+                <div class="accordion accordion-flush" id="accordionTourPrograms">
+                  <div class="accordion-item mb-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed border px-2 pt-3 bg-light" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#arcOne" aria-expanded="false" aria-controls="arcOne">
+                        <div>
+                          <span class="d-block text-primary fw-bold">Ngày 1: HCM - Huế - Đà
+                            Nẵng</span>
+                          <br><span class="text-dark fw-normal"><i class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng,
+                            trưa,
+                            chiều)</span>
+                        </div>
+                      </button>
+                    </h2>
+                    <div id="arcOne" class="accordion-collapse collapse">
+                      <div class="accordion-body bg-white border shadow text-justify text-dark px-2 pt-3">
+                        <p>Sáng nhân viên đón khách tại sân bay Tân Sơn Nhất và hỗ trợ làm thủ tục
+                          chuyến
+                          bay đi Huế.</p>
+                        <p>Đến Huế, xe và HDV địa phương đưa quý khách đến nhà hàng dùng bữa sáng, sau
+                          đó
+                          khởi hành tham quan:</p>
+                        <p>Đại Nội (Kinh Thành Huế) - Gắn liền cùng triều đại nhà Nguyễn với Ngọ Môn,
+                          điện
+                          Thái Hoà, Tử Cấm Thành, Thế Miếu, Hiển Lâm Các, Cửu Đỉnh – Đây cũng là một
+                          trong
+                          những di sản của Việt Nam được UNESCO công nhận là Di sản văn hóa thế giới.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed border px-2 pt-3 bg-light" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#arcTwo" aria-expanded="true" aria-controls="arcTwo">
+                        <div>
+                          <span class="d-block text-primary fw-bold">Ngày 2: Huế - Quảng Bình</span>
+                          <br><span class="text-dark fw-normal"><i class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng,
+                            trưa,
+                            chiều)</span>
+                        </div>
+                      </button>
+                    </h2>
+                    <div id="arcTwo" class="accordion-collapse collapse">
+                      <div class="accordion-body bg-white border shadow text-justify text-dark px-2 pt-3">
+                        <p>Đoàn dùng bữa sáng sau đó khởi hành tham quan:</p>
+                        <p>Viếng thăm Thánh Địa La Vang - Là một trong những địa điểm hành hương quan
+                          trọng
+                          không chỉ riêng đồng bào Công giáo, mà còn của cả người không Công giáo và
+                          khách
+                          du lịch quốc tế.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed border px-2 pt-3 bg-light" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#arcThree" aria-expanded="false"
+                        aria-controls="arcThree">
+                        <div>
+                          <span class="d-block text-primary fw-bold">Ngày 3: Huế - Đà Nẵng - Hội
+                            An</span>
+                          <br><span class="text-dark fw-normal"><i class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng,
+                            trưa,
+                            chiều)</span>
+                        </div>
+                      </button>
+                    </h2>
+                    <div id="arcThree" class="accordion-collapse collapse">
+                      <div class="accordion-body bg-white border shadow text-justify text-dark px-2 pt-3">
+                        <p>Quý khách dùng điểm tâm sáng tại khách sạn, trả phòng. Đoàn khởi hành về Đà
+                          Nẵng:</p>
+                        <p>Bán Đảo Sơn Trà - Quà tặng thiên nhiên cho Đà Nẵng, nổi bật với bãi biển
+                          trong
+                          và rừng xanh mát, là điểm tham quan yên bình và xinh đẹp.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed border px-2 pt-3 bg-light" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#arcFour" aria-expanded="false"
+                        aria-controls="arcFour">
+                        <div>
+                          <span class="d-block text-primary fw-bold">Ngày 4: Đà Nẵng - HCM</span>
+                          <br><span class="text-dark fw-normal"><i class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng,
+                            trưa,
+                            chiều)</span>
+                        </div>
+                      </button>
+                    </h2>
+                    <div id="arcFour" class="accordion-collapse collapse">
+                      <div class="accordion-body border shadow text-justify text-dark px-2 pt-3">
+                        <p>Đoàn dùng điểm tâm sáng tại khách sạn, Quý khách tự do tắm biển Mỹ Khê hoặc
+                          sử
+                          dụng các tiện ích tại khách sạn. Đoàn trả phòng, Khởi hành tham quan:</p>
+                        <p>Đoàn khởi hành khám phá Bà Nà Hills - Xe đưa đoàn đến chân núi Bà Nà, quý
+                          khách
+                          lên cáp treo chinh phục Đỉnh Núi Chúa (1.487m). Trải nghiệm cảm giác bồng
+                          bềnh
+                          giữa mây trời, tận hưởng không khí trong lành và khám phá khu du lịch đẳng
+                          cấp
+                          Bà Nà Hills (Chi phí tự túc).</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tour Programs Start -->
+                <!--<table class="table table-sm table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Địa điểm</th>
+                  <th scope="col">Ngày</th>
+                  <th scope="col">Món ăn</th>
+                  <th scope="col">Mô tả</th>
+                  <th scope="col">Tuỳ chọn</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Brandon Jacob</td>
+                  <td>Designer</td>
+                  <td>28</td>
+                  <td></td>
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Bridie Kessler</td>
+                  <td>Developer</td>
+                  <td>35</td>
+                  <td></td>
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Ashleigh Langosh</td>
+                  <td>Finance</td>
+                  <td>45</td>
+                  <td></td>
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Angus Grady</td>
+                  <td>HR</td>
+                  <td>34</td>
+                  <td></td>
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+
+                    <a href="#" class="text-danger col"><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Raheem Lehner</td>
+                  <td>Dynamic Division Officer</td>
+                  <td>47</td>
+                  <td></td>
+
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Raheem Lehner</td>
+                  <td>Dynamic Division Officer</td>
+                  <td>47</td>
+                  <td></td>
+
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Raheem Lehner</td>
+                  <td>Dynamic Division Officer</td>
+                  <td>47</td>
+                  <td></td>
+
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Raheem Lehner</td>
+                  <td>Dynamic Division Officer</td>
+                  <td>47</td>
+                  <td></td>
+
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Raheem Lehner</td>
+                  <td>Dynamic Division Officer</td>
+                  <td>47</td>
+                  <td></td>
+
+                  <td class="row">
+                    <a href="form-tourprogram.html" class="text-warning col"><i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a href="#" class="text-danger col "><i class="bi bi-trash3-fill"></i>
+                    </a>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>-->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
