@@ -199,6 +199,7 @@
     autosave_restore_when_empty: false,
     autosave_retention: '2m',
     image_advtab: true,
+    automatic_uploads: false, // tắt auto upload
     link_list: [{
         title: 'My page 1',
         value: 'https://www.tiny.cloud'
