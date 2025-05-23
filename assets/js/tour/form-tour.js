@@ -3,6 +3,142 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 (function () {
     'use strict'
 
+    const existingImages = [
+        { id: 'abc123.jpg', url: 'https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/dataimages/201706/original/images1920558_4053279_16.jpg', deleted: false },
+        { id: 'xyz456.jpg', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s', deleted: false },
+        { id: '1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s', deleted: false },
+        { id: '2', url: 'https://cdn-media.sforum.vn/storage/app/media/anh-dep-83.jpg', deleted: false }
+    ];
+
+    let newImages = [];
+
+    function renderImages() {
+        const $imageList = $('#image-list');
+        $imageList.empty();
+
+        existingImages.forEach((img, idx) => {
+            const $div = $('<div class="position-relative image-wrapper" style="min-width: 200px">');
+            if (img.deleted) $div.addClass('opacity-50');
+            //const btnLabel = img.deleted ? '↺' : 'X';
+            const btnLabel = !img.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>';
+            const bgLabel = !img.deleted ? 'btn-danger' : 'btn-primary';
+            $div.html(`
+                <img
+                      src="${img.url}"
+                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
+                    <button type="button" class="toggle-delete btn ${bgLabel} rounded-circle py-0 px-1 position-absolute top-0 end-0" data-index="${idx}">
+                      ${btnLabel}
+                    </button>
+        <!--<img src="${img.url}" style="width: 100px">
+        <button type="button" class="toggle-delete" data-index="${idx}">${btnLabel}</button>-->
+    `);
+            $imageList.append($div);
+        });
+
+        newImages.forEach((item) => {
+            const url = URL.createObjectURL(item.file);
+            const $div = $('<div class="position-relative image-wrapper" style="min-width: 200px">');
+            if (item.deleted) $div.addClass('opacity-50');
+            //const btnLabel = img.deleted ? '↺' : 'X';
+            const btnLabel = !item.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>';
+            const bgLabel = !item.deleted ? 'btn-danger' : 'btn-primary';
+            $div.html(`
+                 <img
+                      src="${url}"
+                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
+                    <button type="button" class="toggle-delete-new btn ${bgLabel} rounded-circle py-0 px-1 position-absolute top-0 end-0" data-id="${item.id}">
+                      ${btnLabel}
+                    </button>
+        <!--<img src="${url}" style="width: 100px">
+        <button type="button" class="toggle-delete-new" data-id="${item.id}">${btnLabel}</button>-->
+    `);
+            $imageList.append($div);
+        });
+
+    }
+
+    $(document).ready(function () {
+        renderImages();
+
+        $('#add-image-btn').on('click', function () {
+            $('#image-input').click();
+        });
+
+        $('#image-input').on('change', function (e) {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                newImages.push({
+                    id: Date.now().toString() + Math.random().toString(36).substring(2),
+                    file,
+                    deleted: false
+                });
+            });
+            renderImages();
+        });
+
+        $('#image-list').on('click', '.toggle-delete, .toggle-delete-new', function () {
+            const $btn = $(this);
+            if ($btn.hasClass('toggle-delete')) {
+                const idx = $btn.data('index');
+                existingImages[idx].deleted = !existingImages[idx].deleted;
+
+                // Cập nhật nút
+                //const btnLabel = img.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>';
+                //const bgLabel = img.deleted ? 'btn-danger' : 'btn-primary';
+
+                $btn.html(!existingImages[idx].deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>');
+                $btn.toggleClass('btn-danger btn-primary');
+                // Cập nhật lớp cho phần tử chứa ảnh
+                $btn.closest('.image-wrapper').toggleClass('opacity-50', existingImages[idx].deleted);
+
+            } else if ($btn.hasClass('toggle-delete-new')) {
+                const id = $btn.data('id');
+                const found = newImages.find(item => item.id === id);
+                if (found) {
+                    found.deleted = !found.deleted;
+
+                    $btn.html(!found.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>');
+                     $btn.toggleClass('btn-danger btn-primary');
+                    $btn.closest('.image-wrapper').toggleClass('opacity-50', found.deleted);
+                }
+            }
+        });
+
+        $('#form').on('submit', function (e) {
+            e.preventDefault();
+
+            const deletedIds = existingImages
+                .filter(img => img.deleted)
+                .map(img => img.id);
+
+            const formData = new FormData(this);
+            formData.set('deleteImages', JSON.stringify(deletedIds));
+
+            newImages
+                .filter(item => !item.deleted)
+                .forEach((item) => {
+                    formData.append('newImages', item.file);
+                });
+
+
+            // $.ajax({
+            //     url: '/upload',
+            //     type: 'POST',
+            //     data: formData,
+            //     processData: false,
+            //     contentType: false,
+            //     success: function (res) {
+            //         alert('Upload thành công!');
+            //     },
+            //     error: function (err) {
+            //         alert('Lỗi khi upload');
+            //     }
+            // });
+        });
+
+
+    });
+
     const fields = [
         { selector: '#tourName', validate: validateTourName, msg: 'Tên tour nằm trong khoảng 15 đến 255 ký tự' },
         { selector: '#tourDuration', validate: validateDuration, msg: 'Từ 1 đến 60 ngày' },
@@ -85,62 +221,12 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
     const quillInstances = []; // lưu các quill được khởi tạo
 
-    function createQuillEditor() {
-        const editorWrapper = $('<div class="quill-wrapper mb-3"></div>');
-        const editorDiv = $('<div class="quill-editor-2"></div>');
-        const feedback = $('<div class="invalid-feedback" style="display: none">Nội dung quá ngắn</div>');
-
-        editorWrapper.append(editorDiv).append(feedback);
-        $('#quill-container').append(editorWrapper);
-
-        const quill = new Quill(editorDiv[0], { theme: 'snow' });
-
-        // Gắn sự kiện validate nếu muốn
-        quill.on('text-change', function () {
-            const text = quill.getText().trim();
-            if (text.length < 10) {
-                feedback.show();
-            } else {
-                feedback.hide();
-            }
-        });
-
-        // Lưu lại đối tượng
-        quillInstances.push({ quill, wrapper: editorWrapper });
-    }
-
-    function removeLastQuillEditor() {
-        if (quillInstances.length > 0) {
-            const last = quillInstances.pop();
-            last.wrapper.remove(); // xóa cả DOM chứa editor
-            // Không cần gọi .destroy vì Quill chưa hỗ trợ chính thức, remove DOM là đủ
-        }
-    }
-
-    // Gắn sự kiện nút
-    $('#btn-add').on('click', createQuillEditor);
-    $('#btn-remove').on('click', removeLastQuillEditor);
-
     quillInstances.forEach(({ quill, wrapper }) => {
         if (!wrapper.hasClass('d-none')) {
             const text = quill.getText().trim();
             // Validate...
         }
     });
-
-    function hideQuillEditor(index) {
-        const instance = quillInstances[index];
-        if (instance) {
-            instance.wrapper.hide(); // ẩn cả wrapper
-        }
-    }
-
-    function showQuillEditor(index) {
-        const instance = quillInstances[index];
-        if (instance) {
-            instance.wrapper.show();
-        }
-    }
 
     let autoSaveData = {}; // JSON tạm
     // Hàm tự động lưu mỗi 5 giây
@@ -174,27 +260,6 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
         createQuillEditor(0); // Tạo ít nhất 1 editor
     }
 
-
-    document.querySelectorAll('.quill-editor-2').forEach(function (el) {
-        const quill = new Quill(el, {
-            modules: {
-                toolbar: [
-                    [{ font: [] }, { size: [] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ color: [] }, { background: [] }],
-                    [{ script: 'super' }, { script: 'sub' }],
-                    [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
-                    ['direction', { align: [] }],
-                    ['link', 'image', 'video'],
-                    ['clean']
-                ]
-            },
-            theme: 'snow'
-        });
-
-        el.__quill = quill;
-    });
-
     let flag = true;
     $('#vehicle input[type="checkbox"]').on("change", function () {
         flag = $('#vehicle input[type="checkbox"]:checked').length == 0;
@@ -227,74 +292,16 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             return;
         }
 
-        const includedContent = quillIncluded.getText().trim(); // Lấy text, không phải HTML
 
-        // const content = tinymce.get("quill-included").getContent();
-
-        document.querySelectorAll('.quill-editor-2').forEach(function (el, index) {
-            const quill = el.__quill;
-            if (quill) {
-                const contentHtml = quill.root.innerHTML; // Lấy HTML
-                const contentText = quill.getText();       // Lấy plain text
-                console.log(`Editor ${index + 1} (HTML):`, contentHtml);
-                console.log(`Editor ${index + 1} (Text):`, contentText);
-            } else {
-                console.log("HELLO2");
-            }
-        });
-
-        // Nếu nội dung trống
-        if (includedContent === '') {
-            event.preventDefault();
-            event.stopPropagation();
-
-            // Hiển thị lỗi
-            document.getElementById('quill-included').classList.add('is-invalid');
-
-            // Nếu chưa có div hiển thị lỗi thì thêm
-            if (!document.querySelector('#quill-included + .invalid-feedback')) {
-                const error = document.createElement('div');
-                error.className = 'invalid-feedback d-block';
-                error.innerText = 'Vui lòng nhập thông tin đã bao gồm.';
-                document.getElementById('quill-included').after(error);
-            }
-
-        } else {
-            // Xóa lỗi nếu có
-            document.getElementById('quill-included').classList.remove('is-invalid');
-            const feedback = document.querySelector('#quill-included + .invalid-feedback');
-            if (feedback) feedback.remove();
-        }
 
         form.classList.add('was-validated');
     }, false);
 
-    function createQuillEditor() {
-        const editorWrapper = $('<div class="quill-wrapper mb-3"></div>');
-        const editorDiv = $('<div class="quill-editor-2"></div>');
-        const feedback = $('<div class="invalid-feedback" style="display: none">Nội dung quá ngắn</div>');
-
-        editorWrapper.append(editorDiv).append(feedback);
-        $('#quill-container').append(editorWrapper);
-
-        const quill = new Quill(editorDiv[0], { theme: 'snow' });
-
-        // Gắn sự kiện validate nếu muốn
-        quill.on('text-change', function () {
-            const text = quill.getText().trim();
-            if (text.length < 10) {
-                feedback.show();
-            } else {
-                feedback.hide();
-            }
-        });
-
-        // Lưu lại đối tượng
-        quillInstances.push({ quill, wrapper: editorWrapper });
-    }
+    let duration = 0;
+    let beforeDuration = 0;
 
     $('#addTour').click(function () {
-        if ($(this).text() == "Thêm tour mới") {
+        if ($(this).text() == "Thêm tour mới" || $(this).text() == "Lưu tour") {
             let isValidForm = true;
 
             fields.forEach(field => {
@@ -337,8 +344,161 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             });
 
             $(this).text("Sửa");
-        } else if($(this).text() == "Sửa"){
+
+            duration = $('#tourDuration').val();
+            if (beforeDuration == 0) {
+                // beforeDuration = duration;
+                $('#tpMark').show();
+            }
+
+            updateTourProgramCard();
+
+        } else if ($(this).text() == "Sửa") {
             $(this).text("Lưu tour");
+
+            tourQuill.forEach(quill => {
+                quill.enable(true);
+            })
+
+            $('#tourForm').find('input[type="checkbox"]').off('click');
+
+            $('#tourForm').find('input:not([type="file"]), textarea').prop('readonly', false);
+
+            $('#idCategory').off('focus click');
+
+            $('#tourImage').off('click drop keydown');
+
         }
     })
+
+    function updateTourProgramCard() {
+        if (beforeDuration == 0) {
+            beforeDuration = 1;
+            while (beforeDuration <= duration) {
+                addTourProgramCard(beforeDuration);
+                beforeDuration++;
+            }
+        } else if (beforeDuration > duration) {
+            $('#tourPrograms .tourProgram').show();
+
+            let index = beforeDuration;
+            while (index >= duration) {
+                let instance = quillInstances[index];
+                if (instance) {
+                    instance.wrapper.hide(); // ẩn cả wrapper
+                }
+                index--;
+            }
+            // console.log($('#tourPrograms .tourProgram:visible').length+"/");
+        } else if (beforeDuration < duration) {
+            $('#tourPrograms .tourProgram').show();
+            while (beforeDuration <= duration) {
+                addTourProgramCard(beforeDuration);
+                beforeDuration++;
+            }
+
+        }
+    }
+
+    function addTourProgramCard(index) {
+        console.log(index);
+        const editorWrapper = $(`<div class="card tourProgram"></div>`);
+        const editorContent = `
+            <div class="card-header bg-secondary text-white text-center text-md-start">Ngày <span
+                    class="day">${index}</span></div>
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item pb-4">
+                    <div class="row">
+                      <div class="col-md-8 col-sm-12">
+                        <div class="form-floating">
+                          <input type="text" class="form-control locations" placeholder="Thời điểm lý tưởng">
+                          <label>Địa điểm chương trình</label>
+                          <div class="invalid-feedback">Độ dài từ 10 ký tự trở lên</div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3 col-sm-12 ms-0 meal">
+                        <p class="mb-1 pt-1 ps-1 ms-lg-0 ps-lg-0 ps-md-0 ms-md-0">Bữa ăn</p>
+                        <div class="d-flex justify-content-md-between justify-content-sm-evenly">
+                          <div class="form-check form-check-inline">
+                            <label>
+                              <input class="form-check-input" type="checkbox" value="Sáng" checked>
+                              Sáng
+                            </label>
+
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <label>
+                              <input class="form-check-input" type="checkbox" value="Trưa" checked>
+                              Trưa
+                            </label>
+
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <label>
+                              <input class="form-check-input" type="checkbox" value="Tối" checked>
+                              Tối
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 mt-2 h-100">
+                        <label class="mb-1 tpContent">Nội dung chương trình</label>
+                        <!--<div class="quill-editor-2"></div>
+                        <div class="invalid-feedback" style="display: none">Độ dài từ 20 ký tự trở lên</div>-->
+                      </div>
+
+                    </div>
+                  </li>
+                </ul>
+        `;
+        $(editorWrapper).html(editorContent);
+
+        const editorDiv = $('<div class="quill-editor-2"></div>');
+        const feedback = $('<div class="invalid-feedback" style="display: none">Độ dài từ 20 ký tự trở lên</div>');
+
+        $(editorWrapper).find('.tpContent').after(editorDiv, feedback);
+        $('#tourPrograms').append(editorWrapper);
+
+        const quill = new Quill(editorDiv[0], { theme: 'snow' });
+
+        // Gắn sự kiện validate nếu muốn
+        quill.on('text-change', function () {
+            const text = quill.getText().trim();
+            if (text.length < 20) {
+                $(feedback).show();
+            } else {
+                $(feedback).hide();
+            }
+        });
+
+        $(editorWrapper).find('.locations').on('input', function () {
+            //let flag = /^[\p{L}0-9()[]{} ]{10,}$/u.test($(this).val());
+            let flag = /^[\p{L}0-9 ]{3,}.{7,}$/u.test($(this).val());
+            $(this).toggleClass('is-invalid', !flag);
+            $(this).toggleClass('is-valid', flag);
+            // if(!flag) $(this).next().next().text('Ít nhất 10 ký tự và không có ký tự đặc biệt');
+        })
+
+        // const $editor = $(`${selector} .ql-editor`);
+        // let $feedback = $editor.parent().next('.invalid-feedback');
+
+        // Thêm method validate thủ công cho bên ngoài gọi
+        quill.validate = function () {
+            const text = quill.getText().trim();
+            if (text.length < 20 || !(/^[\p{L}0-9 ]{3,}.{7,}$/u.test($(editorWrapper).find('.locations').val()))) {
+                $(editorWrapper).find('.locations').toggleClass('is-invalid');
+                $(feedback).show();
+                return false;
+            } else {
+                $(feedback).hide();
+                return true;
+            }
+        };
+
+        // Lưu lại đối tượng
+        quillInstances.push({ quill, wrapper: editorWrapper });
+    }
 })();

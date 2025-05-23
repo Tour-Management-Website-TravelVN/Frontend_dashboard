@@ -409,12 +409,13 @@
       <div class="row">
         <div class="col">
           <!-- ...existing code... -->
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Nhập thông tin cho tour mới</h5>
+          <form class="needs-validation" id="tourForm" novalidate action="">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Nhập thông tin cho tour mới</h5>
 
-              <!-- General Form Elements -->
-              <form class="needs-validation" id="tourForm" novalidate action="">
+                <!-- General Form Elements -->
+
                 <div class="row mb-3" id="tourInfo">
                   <div class="col-md-6">
                     <div class="form-floating">
@@ -424,25 +425,29 @@
                   </div>
                   <div class="col-md-6  mt-3 mt-md-0">
                     <div class="form-floating">
-                      <input class="form-control" type="file" id="tourImage" placeholder="Ảnh" multiple
+                      <!--tourImage-->
+                      <input class="form-control" type="file" id="image-input" placeholder="Ảnh" multiple
                         accept="/image/*" required>
-                      <label for="tourImage">Ảnh</label>
+                      <label for="image-input">Ảnh</label>
                     </div>
                   </div>
                 </div>
 
 
                 <div class="d-flex overflow-auto gap-3 p-2 border col-12 mb-3" style="height: 250px; width: auto;">
-                  <div class="position-relative" style="min-width: 200px">
+                  <div id="image-list" class="d-flex overflow-auto gap-3 p-2 border col-12 mb-0 border-0" style="height: 250px; width: auto;">
+
+                  </div>
+                  <!-- <div class="position-relative" style="min-width: 200px">
                     <img
                       src="https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/dataimages/201706/original/images1920558_4053279_16.jpg"
                       class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
                     <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
                       <i class="bi bi-x text-white fw-bold fs-5"></i>
                     </button>
-                  </div>
+                  </div> -->
 
-                  <div class="position-relative" style="min-width: 200px">
+                  <!-- <div class="position-relative" style="min-width: 200px">
                     <img
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s"
                       class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
@@ -457,10 +462,12 @@
                     <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
                       <i class="bi bi-x text-white fw-bold fs-5"></i>
                     </button>
-                  </div>
+                  </div> -->
 
                   <div class="w-100 h100 d-flex align-items-center me-3">
-                    <i class="bi bi-plus-circle text-primary h1"></i>
+                    <button type="button" class="bg-white border-0" id="add-image-btn">
+                      <i class="bi bi-plus-circle text-primary h1"></i>
+                    </button>
                   </div>
                 </div>
 
@@ -472,8 +479,8 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="number" class="form-control" id="tourDuration" placeholder="Thời lượng tour"
-                        required>
+                      <input type="number" class="form-control" id="tourDuration" placeholder="Thời lượng tour" required
+                        value="5">
                       <label for="tourDuration">Thời lượng tour (ngày)</label>
                       <div class="invalid-feedback">Từ 1 đến 60 ngày</div>
 
@@ -614,15 +621,16 @@
                   </div>
                 </div>
 
+              </div>
             </div>
-          </div>
 
-          <hr>
+            <hr>
 
-          <div class="card">
-            <div class="card-body" id="tourPrograms">
-              <h5 class="card-title">Chương trình tour</h5>
-              <div class="card">
+            <div class="card" id="tpMark" style="display: none;">
+              <div class="card-body">
+                <h5 class="card-title">Chương trình tour</h5>
+                <div class="card-body" id="tourPrograms">
+                  <!-- <div class="card tourProgram">
                 <div class="card-header bg-secondary text-white text-center text-md-start">Ngày <span
                     class="day">1</span></div>
 
@@ -665,6 +673,7 @@
                       <div class="col-12 mt-2 h-100">
                         <label class="mb-1">Nội dung chương trình</label>
                         <div class="quill-editor-2"></div>
+                        <div class="invalid-feedback" style="display: none">Độ dài từ 20 ký tự trở lên</div>
                       </div>
 
                     </div>
@@ -673,24 +682,24 @@
               </div>
 
               <div id="quill-container">
-                <!-- các editor sẽ được thêm vào đây -->
+                
               </div>
 
               <button id="btn-add">Thêm editor</button>
-              <button id="btn-remove">Xóa editor cuối</button>
+              <button id="btn-remove">Xóa editor cuối</button> -->
+
+                </div>
+                <button type="submit" id="saveAll" class="btn btn-primary float-end" style="width: 150px;">Lưu</button>
+              </div>
 
 
-              <button type="submit" id="saveAll" class="btn btn-primary float-end" style="width: 150px;">Lưu</button>
             </div>
-
-
-          </div>
 
           </form><!-- End General Form Elements -->
         </div>
       </div>
       <!-- ...existing code... -->
-      </form><!-- End General Form Elements -->
+
 
       </div>
       </div>

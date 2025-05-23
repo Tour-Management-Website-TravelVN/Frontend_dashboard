@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+
+    <style>
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .image-wrapper.deleted {
+            opacity: 0.4;
+        }
+
+        .image-wrapper button {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="image-list"></div>
+
+    <input type="file" id="image-input" accept="image/*" style="display: none" multiple>
+    <button type="button" id="add-image-btn">+</button>
+
+    <form id="form" method="post" enctype="multipart/form-data" action="/upload">
+        <input type="hidden" name="deleteImages" id="deleteImages">
+        <!-- ảnh mới sẽ được thêm qua FormData JS -->
+        <button type="submit">Gửi</button>
+    </form>
+
+    <script>
+
+        const existingImages = [
+            { id: 'abc123.jpg', url: 'https://travelgear.vn/blog/wp-content/uploads/2019/03/tour-la-gi1.jpg', deleted: false },
+            { id: 'xyz456.jpg', url: 'https://i2.ex-cdn.com/crystalbay.com/files/content/2024/01/27/tour-charter-la-gi-tai-sao-hinh-thuc-du-lich-nay-lai-thu-hut-dong-dao-du-khach-1-1546.jpeg', deleted: false }
+        ];
+
+        let newImages = [];
+
+        function renderImages() {
+            const $imageList = $('#image-list');
+            $imageList.empty();
+
+            // Hiển thị ảnh cũ
+            // existingImages.forEach((img, idx) => {
+            //     const $div = $('<div class="image-wrapper"></div>');
+            //     if (img.deleted) $div.addClass('deleted');
+            //     $div.html(`
+            //     <img src="${img.url}" style="width: 100px">
+            //     <button type="button" class="toggle-delete" data-index="${idx}">X</button>
+            // `);
+            //     $imageList.append($div);
+            // });
+
+            existingImages.forEach((img, idx) => {
+                const $div = $('<div class="image-wrapper"></div>');
+                if (img.deleted) $div.addClass('deleted');
+                const btnLabel = img.deleted ? '↺' : 'X';
+                $div.html(`
+        <img src="${img.url}" style="width: 100px">
+        <button type="button" class="toggle-delete" data-index="${idx}">${btnLabel}</button>
+    `);
+                $imageList.append($div);
+            });
+
+
+            // Hiển thị ảnh mới
+            // newImages.forEach((file) => {
+            //     const url = URL.createObjectURL(file);
+            //     const $div = $('<div></div>');
+            //     $div.html(`<img src="${url}" style="width: 100px">
+            //     <button type="button" class="toggle-delete">X</button>
+            // `);
+            //     $imageList.append($div);
+            // });
+
+            // newImages.forEach((file, idx) => {
+            //     const url = URL.createObjectURL(file);
+            //     const $div = $('<div class="image-wrapper"></div>');
+            //     $div.html(`<img src="${url}" style="width: 100px">
+            //    <button type="button" class="toggle-delete-new" data-index="${idx}">X</button>`);
+            //     $imageList.append($div);
+            // });
+
+            //         newImages.forEach((item) => {
+            //             const url = URL.createObjectURL(item.file);
+            //             const $div = $('<div class="image-wrapper"></div>');
+            //             $div.html(`<img src="${url}" style="width: 100px">
+            //    <button type="button" class="toggle-delete-new" data-id="${item.id}">X</button>`);
+            //             $imageList.append($div);
+            //         });
+
+            newImages.forEach((item) => {
+                const url = URL.createObjectURL(item.file);
+                const $div = $('<div class="image-wrapper"></div>');
+                if (item.deleted) $div.addClass('deleted');
+                const btnLabel = item.deleted ? '↺' : 'X';
+                $div.html(`
+        <img src="${url}" style="width: 100px">
+        <button type="button" class="toggle-delete-new" data-id="${item.id}">${btnLabel}</button>
+    `);
+                $imageList.append($div);
+            });
+
+        }
+
+
+        // function renderImagesFragment() {
+        //     const container = document.getElementById('image-list');
+        //     const fragment = document.createDocumentFragment();
+
+        //     // Ảnh cũ
+        //     existingImages.forEach((img, idx) => {
+        //         const div = document.createElement('div');
+        //         div.className = 'image-wrapper';
+        //         if (img.deleted) div.classList.add('deleted');
+        //         div.innerHTML = `
+        //     <img src="${img.url}" style="width: 100px">
+        //     <button type="button" class="toggle-delete" data-index="${idx}">
+        //         ${img.deleted ? '↺' : 'X'}
+        //     </button>`;
+        //         fragment.appendChild(div);
+        //     });
+
+        //     // Ảnh mới
+        //     newImages.forEach(item => {
+        //         const div = document.createElement('div');
+        //         div.className = 'image-wrapper';
+        //         if (item.deleted) div.classList.add('deleted');
+        //         const url = URL.createObjectURL(item.file);
+        //         div.innerHTML = `
+        //     <img src="${url}" style="width: 100px">
+        //     <button type="button" class="toggle-delete-new" data-id="${item.id}">
+        //         ${item.deleted ? '↺' : 'X'}
+        //     </button>`;
+        //         fragment.appendChild(div);
+        //     });
+
+        //     // Xóa và gắn mới 1 lần duy nhất
+        //     container.innerHTML = '';
+        //     container.appendChild(fragment);
+        // }
+
+
+        $(document).ready(function () {
+            renderImages();
+
+            $('#add-image-btn').on('click', function () {
+                $('#image-input').click();
+            });
+
+            $('#image-input').on('change', function (e) {
+                const files = Array.from(e.target.files);
+                files.forEach(file => {
+                    newImages.push({
+                        id: Date.now().toString() + Math.random().toString(36).substring(2),
+                        file,
+                        deleted: false
+                    });
+                });
+                renderImages();
+            });
+
+
+            // $('#image-input').on('change', function (e) {
+            //     newImages.push(...e.target.files);
+            //     renderImages();
+            // });
+
+            // $('#image-list').on('click', '.toggle-delete', function () {
+            //     const index = +$(this).data('index');
+            //     existingImages[index].deleted = !existingImages[index].deleted;
+            //     renderImages();
+            // });
+
+            // $('#image-list').on('click', '.toggle-delete-new', function () {
+            //     const index = +$(this).data('index');
+            //     newImages.splice(index, 1);
+            //     renderImages();
+            // });
+
+            // $('#image-list').on('click', '.toggle-delete-new', function () {
+            //     const id = $(this).data('id');
+            //     newImages = newImages.filter(item => item.id !== id);
+            //     renderImages();
+            // });
+
+            // $('#image-list').on('click', '.toggle-delete-new', function () {
+            //     const id = $(this).data('id');
+            //     const found = newImages.find(item => item.id === id);
+            //     if (found) {
+            //         found.deleted = !found.deleted;
+            //     }
+            //     renderImages();
+            // });
+
+            $('#image-list').on('click', '.toggle-delete, .toggle-delete-new', function () {
+                const $btn = $(this);
+                if ($btn.hasClass('toggle-delete')) {
+                    const idx = $btn.data('index');
+                    existingImages[idx].deleted = !existingImages[idx].deleted;
+
+                    // Cập nhật nút
+                    $btn.text(existingImages[idx].deleted ? '↺' : 'X');
+                    // Cập nhật lớp cho phần tử chứa ảnh
+                    $btn.closest('.image-wrapper').toggleClass('deleted', existingImages[idx].deleted);
+
+                } else if ($btn.hasClass('toggle-delete-new')) {
+                    const id = $btn.data('id');
+                    const found = newImages.find(item => item.id === id);
+                    if (found) {
+                        found.deleted = !found.deleted;
+
+                        $btn.text(found.deleted ? '↺' : 'X');
+                        $btn.closest('.image-wrapper').toggleClass('deleted', found.deleted);
+                    }
+                }
+            });
+
+
+
+            $('#form').on('submit', function (e) {
+                e.preventDefault();
+
+                const deletedIds = existingImages
+                    .filter(img => img.deleted)
+                    .map(img => img.id);
+
+                const formData = new FormData(this);
+                formData.set('deleteImages', JSON.stringify(deletedIds));
+
+                // newImages.forEach((item) => {
+                //     formData.append('newImages', item.file);
+                // });
+
+                newImages
+                    .filter(item => !item.deleted)
+                    .forEach((item) => {
+                        formData.append('newImages', item.file);
+                    });
+
+
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (res) {
+                        alert('Upload thành công!');
+                    },
+                    error: function (err) {
+                        alert('Lỗi khi upload');
+                    }
+                });
+            });
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
