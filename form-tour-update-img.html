@@ -40,7 +40,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <script type="module" src="assets/js/tour/form-tour.js"></script>
+  <script src="assets/js/tour/form-tour-update-img.js"></script>
 </head>
 
 <body>
@@ -392,15 +392,16 @@
 
   </aside><!-- End Sidebar-->
 
+
   <main id="main" class="main">
 
     <div class="pagetitle d-flex">
-      <h1>Thêm tour mới</h1>
+      <h1>Cập nhật ảnh tour</h1>
       <nav class="ms-auto">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
           <li class="breadcrumb-item">Quản lý tour</li>
-          <li class="breadcrumb-item active">Thêm tour mới</li>
+          <li class="breadcrumb-item active">Cập nhật ảnh tour</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -411,15 +412,15 @@
           <!-- ...existing code... -->
           <form class="needs-validation" id="tourForm" novalidate action="">
             <div class="card">
-              <div class="card-body" id="infoBasic">
-                <h5 class="card-title">Nhập thông tin cho tour mới</h5>
+              <div class="card-body">
+                <h5 class="card-title">Cập nhật ảnh cho tour</h5>
 
                 <!-- General Form Elements -->
 
                 <div class="row mb-3" id="tourInfo">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control bg-light" id="tourId" placeholder="Mã tour" readonly>
+                      <input type="text" class="form-control bg-light" id="tourId" value="T996-31564-2N1Đ" placeholder="Mã tour" readonly>
                       <label for="tourId">Mã tour</label>
                     </div>
                   </div>
@@ -434,37 +435,11 @@
                   </div>
                 </div>
 
-
                 <div class="d-flex overflow-auto gap-3 p-2 border col-12 mb-3" style="height: 250px; width: auto;">
                   <div id="image-list" class="d-flex overflow-auto gap-3 p-2 border col-12 mb-0 border-0"
                     style="height: 250px; width: auto;">
 
                   </div>
-                  <!-- <div class="position-relative" style="min-width: 200px">
-                    <img
-                      src="https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/dataimages/201706/original/images1920558_4053279_16.jpg"
-                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
-                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
-                      <i class="bi bi-x text-white fw-bold fs-5"></i>
-                    </button>
-                  </div> -->
-
-                  <!-- <div class="position-relative" style="min-width: 200px">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s"
-                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
-                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
-                      <i class="bi bi-x text-white fw-bold fs-5"></i>
-                    </button>
-                  </div>
-
-                  <div class="position-relative" style="min-width: 200px">
-                    <img src="https://cdn-media.sforum.vn/storage/app/media/anh-dep-83.jpg"
-                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
-                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
-                      <i class="bi bi-x text-white fw-bold fs-5"></i>
-                    </button>
-                  </div> -->
 
                   <div class="w-100 h100 d-flex align-items-center me-3">
                     <button type="button" class="bg-white border-0" id="add-image-btn">
@@ -473,134 +448,13 @@
                   </div>
                 </div>
 
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="tourName" placeholder="Tên tour" required>
-                  <label for="tourName">Tên tour</label>
-                  <div class="invalid-feedback">Tên tour nằm trong khoảng 15 đến 255 ký tự.</div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <div class="form-floating">
-                      <input type="number" class="form-control" id="tourDuration" placeholder="Thời lượng tour" required>
-                      <label for="tourDuration">Thời lượng tour (ngày)</label>
-                      <div class="invalid-feedback">Từ 1 đến 60 ngày</div>
-
-                    </div>
-                  </div>
-                  <div class="col-md-6 mt-3 mt-md-0">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="tourDeparture" placeholder="Nơi khởi hành" required>
-                      <label for="tourDeparture">Nơi khởi hành</label>
-                      <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="tourAttractions" placeholder="Điểm tham quan" required>
-                  <label for="tourAttractions">Điểm tham quan</label>
-                  <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="tourTarget" placeholder="Đối tượng nhắm tới" required>
-                  <label for="tourTarget">Đối tượng thích hợp</label>
-                  <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
-
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="tourCuisine" placeholder="Ẩm thực" required>
-                  <label for="tourCuisine">Ẩm thực</label>
-                  <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
-
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="tourIdealTime" placeholder="Thời điểm lý tưởng"
-                        required>
-                      <label for="tourIdealTime">Thời điểm lý tưởng</label>
-                      <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
-                    </div>
-
-                  </div>
-                  <div class="col-md-6 mt-3 mt-md-0">
-                    <div class="form-floating">
-                      <select class="form-select" id="idCategory" required>
-                        <option value="" selected disabled hidden>Chọn thể loại</option>
-                        <option value="1">Du lịch biển</option>
-                        <option value="2">Du lịch núi</option>
-                        <option value="3">Du lịch văn hóa</option>
-                        <option value="4">Du lịch ẩm thực</option>
-                        <option value="5">Du lịch sinh thái</option>
-                        <option value="6">Du lịch mạo hiểm</option>
-                      </select>
-                      <label for="floatingSelect">Thể loại</label>
-                      <div class="invalid-feedback">Vui lòng chọn thể loại.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-0">
-                  <div class="card pt-3">
-                    <div class="card-body">
-                      <label for="quill-included" class="mb-1">Đã bao gồm</label>
-                      <div id="quill-included"></div>
-                      <div class="invalid-feedback">Độ dài từ 20 ký tự trở lên.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-0">
-                  <div class="card pt-3 mt-0">
-                    <div class="card-body">
-                      <label for="quill-not-included" class="mb-1">Chưa bao gồm</label>
-                      <div id="quill-not-included"></div>
-                      <div class="invalid-feedback">Độ dài từ 20 ký tự trở lên.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-0">
-                  <div class="card pt-3">
-                    <div class="card-body">
-                      <label for="quill-description" class="mb-1">Mô tả</label>
-                      <div id="quill-description"></div>
-                      <div class="invalid-feedback">Độ dài từ 20 ký tự trở lên.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <legend class="col-form-label col-sm-auto pt-0">Phương tiện</legend>
-                  <div class="col-sm-9 ms-0" id="vehicle">
-                    <div class="form-check form-check-inline">
-                      <input name="vehicle" class="form-check-input" type="checkbox" id="vehicleCar" value="Ô tô" checked>
-                      <label class="form-check-label" for="vehicleCar">Ô tô</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input name="vehicle" class="form-check-input" type="checkbox" id="vehiclePlane" value="Máy bay" checked>
-                      <label class="form-check-label" for="vehiclePlane">Máy bay</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input name="vehicle" class="form-check-input" type="checkbox" id="vehicleTrain" value="Tàu hỏa" checked>
-                      <label class="form-check-label" for="vehicleTrain">Tàu hoả</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input name="vehicle" class="form-check-input" type="checkbox" id="vehicleShip" value="Tàu thủy" checked>
-                      <label class="form-check-label" for="vehicleShip">Tàu thuỷ</label>
-                    </div>
-                    <div class="small text-danger mt-1 fs-6" style="display: none;">Chọn ít nhất 1 phương tiện.</div>
-                  </div>
-                </div>
                 <div class="row mb-3 d-flex justify-content-center justify-content-md-end">
-                  <div class="col-auto">
-                    <button type="button" class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnClear" 
-                      style="width: 150px;">Bỏ khôi phục</a>
-                  </div>
                   <div class="col-auto">
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                       style="width: 150px;">Hủy bỏ</button>
                   </div>
                   <div class="col-auto">
-                    <button type="button" class="btn btn-primary" id="addTour" style="width: 150px;">Thêm tour mới</button>
+                    <button type="button" class="btn btn-primary" id="addTour" style="width: 150px;">Lưu</button>
                   </div>
 
                 </div>
@@ -610,8 +464,8 @@
                   aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                      <div class="modal-header bg-danger">
-                        <h5 class="modal-title text-white fw-bold fs-4" id="staticBackdropLabel">Xác nhận thoát</h5>
+                      <div class="modal-header">
+                        <h5 class="modal-title text-danger fw-bold fs-4" id="staticBackdropLabel">Xác nhận thoát</h5>
                         <button type="button" class="btn-close fs-3" data-bs-dismiss="modal"
                           aria-label="Close"></button>
                       </div>
@@ -619,8 +473,8 @@
                         Thông tin tour sẽ không được lưu?
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnCancel" data-bs-dismiss="modal">Hủy</button>
-                        <button type="button" class="btn btn-danger" id="btnExit">Xác nhận</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                        <a href="/adv/to/tour/tour_detail?tourid=?" class="btn btn-primary">Xác nhận</a>
                       </div>
                     </div>
                   </div>
@@ -632,12 +486,12 @@
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title text-danger fw-bold fs-4">Kiểm tra thông tin lần cuối</h5>
+                        <h5 class="modal-title text-danger fw-bold fs-4">Kiểm tra lại thông tin</h5>
                         <button type="button" class="btn-close fs-3" data-bs-dismiss="modal"
                           aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        Hãy kiểm tra lại thông tin tour lần cuối
+                        Tour phải có ít nhất 1 ảnh
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>
@@ -647,85 +501,6 @@
                 </div>
 
               </div>
-            </div>
-
-            <hr>
-
-            <div class="card" id="tpMark" style="display: none;">
-              <div class="card-body">
-                <h5 class="card-title">Chương trình tour</h5>
-                <div class="card-body" id="tourPrograms">
-                  <!-- <div class="card tourProgram">
-                <div class="card-header bg-secondary text-white text-center text-md-start">Ngày <span
-                    class="day">1</span></div>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item pb-4">
-                    <div class="row">
-                      <div class="col-md-8 col-sm-12">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="tourIdealTime" placeholder="Thời điểm lý tưởng">
-                          <label>Địa điểm chương trình</label>
-                        </div>
-                      </div>
-
-                      <div class="col-md-3 col-sm-12 ms-0 meal">
-                        <p class="mb-1 pt-1 ps-1 ms-lg-0 ps-lg-0 ps-md-0 ms-md-0">Bữa ăn</p>
-                        <div class="d-flex justify-content-md-between justify-content-sm-evenly">
-                          <div class="form-check form-check-inline">
-                            <label>
-                              <input class="form-check-input" type="checkbox" value="Sáng" checked>
-                              Sáng
-                            </label>
-
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <label>
-                              <input class="form-check-input" type="checkbox" value="Trưa" checked>
-                              Trưa
-                            </label>
-
-                          </div>
-                          <div class="form-check form-check-inline">
-                            <label>
-                              <input class="form-check-input" type="checkbox" value="Tối" checked>
-                              Tối
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-12 mt-2 h-100">
-                        <label class="mb-1">Nội dung chương trình</label>
-                        <div class="quill-editor-2"></div>
-                        <div class="invalid-feedback" style="display: none">Độ dài từ 20 ký tự trở lên</div>
-                      </div>
-
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <div id="quill-container">
-                
-              </div>
-
-              <button id="btn-add">Thêm editor</button>
-              <button id="btn-remove">Xóa editor cuối</button> -->
-
-                </div>
-                <div class="container row mx-2 mb-3 d-flex justify-content-center justify-content-md-end">
-                  <div class="col-auto">
-                    <button type="button" class="btn btn-danger" id="unlockAll" style="width: 150px;">Hủy bỏ</button>
-                  </div>
-                  <div class="col-auto">
-                    <button type="button" id="saveAll" class="btn btn-primary float-end"
-                      style="width: 150px;">Lưu</button>
-                  </div>
-                </div>
-              </div>
-
-
             </div>
 
           </form><!-- End General Form Elements -->

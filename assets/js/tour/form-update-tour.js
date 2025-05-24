@@ -3,12 +3,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 (function () {
     'use strict'
 
-    const existingImages = [
-        // { id: 'abc123.jpg', url: 'https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/dataimages/201706/original/images1920558_4053279_16.jpg', deleted: false },
-        // { id: 'xyz456.jpg', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s', deleted: false },
-        // { id: '1', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s', deleted: false },
-        // { id: '2', url: 'https://cdn-media.sforum.vn/storage/app/media/anh-dep-83.jpg', deleted: false }
-    ];
+    let existingImages = [];
 
     let newImages = [];
 
@@ -19,7 +14,6 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
         existingImages.forEach((img, idx) => {
             const $div = $('<div class="position-relative image-wrapper" style="min-width: 200px">');
             if (img.deleted) $div.addClass('opacity-50');
-            //const btnLabel = img.deleted ? '↺' : 'X';
             const btnLabel = !img.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>';
             const bgLabel = !img.deleted ? 'btn-danger' : 'btn-primary';
             $div.html(`
@@ -39,7 +33,6 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             const url = URL.createObjectURL(item.file);
             const $div = $('<div class="position-relative image-wrapper" style="min-width: 200px">');
             if (item.deleted) $div.addClass('opacity-50');
-            //const btnLabel = img.deleted ? '↺' : 'X';
             const btnLabel = !item.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>';
             const bgLabel = !item.deleted ? 'btn-danger' : 'btn-primary';
             $div.html(`
@@ -58,6 +51,20 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
     }
 
     $(document).ready(function () {
+        restoreTourPrograms(JSON.parse(localStorage.getItem("tourPrograms")));
+        localStorage.removeItem("tourPrograms")
+
+        loadFormFromLocalStorage();
+        const fromStorage = localStorage.getItem('updateImgsTour');
+        if (fromStorage) {
+            existingImages = JSON.parse(fromStorage);
+        }
+
+        // console.log(existingImages)
+
+        // Xoá key (chỉ cần tên key thôi)
+        localStorage.removeItem('updateImgsTour');
+
         renderImages();
 
         $('#add-image-btn').on('click', function () {
@@ -82,10 +89,6 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
                 const idx = $btn.data('index');
                 existingImages[idx].deleted = !existingImages[idx].deleted;
 
-                // Cập nhật nút
-                //const btnLabel = img.deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>';
-                //const bgLabel = img.deleted ? 'btn-danger' : 'btn-primary';
-
                 $btn.html(!existingImages[idx].deleted ? '<i class="bi bi-x text-white fw-bold fs-5"></i>' : '<i class="bi bi-arrow-clockwise text-white fw-bold fs-5"></i>');
                 $btn.toggleClass('btn-danger btn-primary');
                 // Cập nhật lớp cho phần tử chứa ảnh
@@ -104,42 +107,11 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             }
         });
 
-        /*
-        $('#form').on('submit', function (e) {
-            e.preventDefault();
-
-            const deletedIds = existingImages
-                .filter(img => img.deleted)
-                .map(img => img.id);
-
-            const formData = new FormData(this);
-            formData.set('deleteImages', JSON.stringify(deletedIds));
-
-            newImages
-                .filter(item => !item.deleted)
-                .forEach((item) => {
-                    formData.append('newImages', item.file);
-                });
-
-
-            // $.ajax({
-            //     url: '/upload',
-            //     type: 'POST',
-            //     data: formData,
-            //     processData: false,
-            //     contentType: false,
-            //     success: function (res) {
-            //         alert('Upload thành công!');
-            //     },
-            //     error: function (err) {
-            //         alert('Lỗi khi upload');
-            //     }
-            // });      
-        });
-    */
-        $('#btnExit').click(function(){
-            localStorage.removeItem("tourFormDraft");
-            window.location.href = "/adv/to/tour";
+        $('#btnExit').click(function () {
+            localStorage.removeItem("tourFormDraft2");
+            // const params = new URLSearchParams(window.location.search);
+            // const tourId = params.get('tourId'); // nếu URL có ?tourId=123
+            window.location.href = "/adv/to/tour_detail?tourid="+encodeURIComponent($("#tourId").val());
         })
     });
 
@@ -165,15 +137,6 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             validateField($(this), field.validate(this.value), this.msg);
         })
     })
-
-    // Gắn sự kiện input và change cho tất cả input/select trong form
-    // $('#bookingForm').on('input change', 'input, select, textarea', function () {
-    //     if (form.checkValidity() && $('#bookingForm').find(".is-invalid").length === 0) {
-    //         $('#book').prop('disabled', false);  // Bật nút
-    //     } else {
-    //         $('#book').prop('disabled', true);   // Tắt nút
-    //     }
-    // });
 
     // Hàm khởi tạo Quill editor có validate
     function initQuillEditor(selector, minLength = 0, errorMessage = '') {
@@ -226,43 +189,34 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
     const quillInstances = []; // lưu các quill được khởi tạo
 
 
-
-    let autoSaveData = {}; // JSON tạm
-    // Hàm tự động lưu mỗi 5 giây
-    // function autoSaveQuillContent() {
-    //     quillInstances.forEach((instance, i) => {
-    //         const content = instance.quill.root.innerHTML;
-    //         autoSaveData[`editor${i + 1}`] = content;
-    //     });
-
-    //     // Lưu vào localStorage (tuỳ chọn)
-    //     localStorage.setItem('quillAutoSave', JSON.stringify(autoSaveData));
-
-    //     console.log('Đã tự động lưu:', autoSaveData);
-    // }
-
-    const waitForQuill = setInterval(() => {
-        if (quillDescription && quillIncluded && quillNotIncluded) {
-            clearInterval(waitForQuill);
-            loadFormFromLocalStorage();
-        }
-    }, 1000); // Kiểm tra mỗi 100ms
+    // const waitForQuill = setInterval(() => {
+    //     if (quillDescription && quillIncluded && quillNotIncluded) {
+    //         clearInterval(waitForQuill);
+    //         loadFormFromLocalStorage();
+    //     }
+    // }, 1000); // Kiểm tra mỗi 100ms
 
     const loadFormFromLocalStorage = () => {
-        const saved = localStorage.getItem('tourFormDraft');
+        const saved = localStorage.getItem('tourFormDraft2');
         if (!saved) {
             $('#btnClear').hide();
             return;
         };
 
-        $('#btnClear').click(function(){
-            localStorage.removeItem("tourFormDraft");
-            window.location.href = "/adv/to/tour/tour_form?action=add=";
-        })
-
         const data = JSON.parse(saved);
         const tour = data.tour;
 
+        if ($('#tourId').val() != tour.tourId) {
+            $('#btnClear').hide();
+            return;
+        };
+
+        $('#btnClear').click(function(){
+            localStorage.removeItem("tourFormDraft2");
+            window.location.href = "/adv/to/tour/tour_form?action=update&tourid="+encodeURIComponent(tourid);
+        })
+
+        $('#tourId').val(tour.tourId);
         $('#tourName').val(tour.tourName);
         $('#tourDuration').val(tour.duration);
         $('#tourTarget').val(tour.targetAudience);
@@ -278,75 +232,9 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
         // Xóa các chương trình cũ nếu cần
         $('#programContainer').empty();
-        // quillInstances = [];
 
-        // Phục hồi tourPrograms
-        // const programs = data.tourPrograms || [];
-        // programs.forEach((prog, index) => {
-        //     // Gọi hàm thêm 1 chương trình mới
-        //     const wrapper = addProgramDay(); // trả về wrapper DOM và quill instance
-
-        //     // Gán dữ liệu
-        //     wrapper.find('.locations').val(prog.locations);
-        //     wrapper.find('.day').val(prog.day);
-
-        //     // Bữa ăn
-        //     const meals = prog.mealDescription.match(/\((.*?)\)/); // lấy phần trong ngoặc
-        //     if (meals && meals[1]) {
-        //         const mealList = meals[1].split(',').map(x => x.trim());
-        //         mealList.forEach(meal => {
-        //             wrapper.find(`input[type="checkbox"][value="${meal}"]`).prop("checked", true);
-        //         });
-        //     }
-
-        //     // Mô tả (Quill)
-        //     const quill = quillInstances[index].quill;
-        //     quill.root.innerHTML = prog.description;
-        // });
         restoreTourPrograms(data.tourPrograms);
     };
-
-    /*
-    const restoreTourPrograms = (tourPrograms) => {
-        // Xóa hết hiện tại (nếu cần làm sạch)
-        $('#tourPrograms').empty();
-        quillInstances.length = 0;
-        beforeDuration = 0;
-
-        tourPrograms.forEach((program, index) => {
-            const dayIndex = program.day; // giả sử day bắt đầu từ 1
-
-            if(dayIndex != null) $('#tpMark').show();
-
-            addTourProgramCard(dayIndex);
-            beforeDuration++; // giữ đồng bộ với updateTourProgramCard()
-
-            const wrapper = $('#tourPrograms .tourProgram').last(); // phần tử vừa thêm
-
-            // Gán địa điểm
-            wrapper.find('.locations').val(program.locations);
-
-            // Gán bữa ăn
-            const selectedMeals = [];
-            if (program.mealDescription.includes("Sáng")) selectedMeals.push("Sáng");
-            if (program.mealDescription.includes("Trưa")) selectedMeals.push("Trưa");
-            if (program.mealDescription.includes("Tối")) selectedMeals.push("Tối");
-
-            wrapper.find('input[type="checkbox"]').each(function () {
-                const meal = $(this).val();
-                $(this).prop('checked', selectedMeals.includes(meal));
-            });
-
-            // Gán Quill nội dung
-            const instance = quillInstances[dayIndex];
-            if (instance) {
-                instance.quill.root.innerHTML = program.description;
-            }
-        });
-
-        console.log(beforeDuration);
-    };
-    */
 
     const restoreTourPrograms = (tourPrograms) => {
         // Xóa hết hiện tại
@@ -364,6 +252,8 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             beforeDuration++;
 
             const wrapper = $('#tourPrograms .tourProgram').last(); // DOM phần tử vừa tạo
+
+            wrapper.attr("data-tpi", program.id);
 
             // Gán địa điểm
             wrapper.find('.locations').val(program.locations);
@@ -402,6 +292,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             }).get().join(', ');
 
         const tour = {
+            tourId: $("#tourId").val().trim(),
             tourName: $('#tourName').val().trim(),
             duration: $('#tourDuration').val().trim(),
             vehicle: vehicle,
@@ -424,6 +315,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
                     }).get();
                 const mealDescription = meals.length > 0 ? meals.length + " bữa ăn (" + meals.join(", ") + ")" : "Các bữa ăn tự chuẩn bị";
                 const tourProgram = {
+                    id: parseInt(wrapper.attr('data-tpi')),
                     locations: wrapper.find('.locations').val().trim(),
                     day: parseInt(wrapper.find('.day').text()),
                     mealDescription: mealDescription,
@@ -439,27 +331,11 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             tourPrograms
         };
 
-        localStorage.setItem('tourFormDraft', JSON.stringify(saveObject));
+        localStorage.setItem('tourFormDraft2', JSON.stringify(saveObject));
     };
 
     //Gọi autoSave mỗi 5 giây
     setInterval(saveFormToLocalStorage, 5000);
-
-
-    // const savedData = localStorage.getItem('quillAutoSave');
-    // if (savedData) {
-    //     const parsedData = JSON.parse(savedData);
-
-    //     Object.keys(parsedData).forEach((key, i) => {
-    //         createQuillEditor(i);
-    //         // Delay 1 chút cho Quill khởi tạo xong
-    //         setTimeout(() => {
-    //             quillInstances[i].quill.root.innerHTML = parsedData[key];
-    //         }, 100);
-    //     });
-    // } else {
-    //     createQuillEditor(0); // Tạo ít nhất 1 editor
-    // }
 
     let flag = false;
     $('#vehicle input[type="checkbox"]').on("change", function () {
@@ -471,33 +347,6 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
         if (flag) $('#vehicle').find('div').last().text("Chọn ít nhất 1 phương tiện.");
     })
 
-    // Lấy form
-    const form = document.getElementById('tourForm');
-
-    // $('#continueBtn')
-    form.addEventListener('submit', function (event) {
-
-        let isValidForm = true;
-
-        fields.forEach(field => {
-            const $input = $(field.selector);
-            if (!validateField($input, field.validate($input.val()), field.message)) {
-                isValidForm = false;
-            }
-        });
-
-        if (!this.checkValidity() || !isValidForm || flag) {
-            event.preventDefault();
-            event.stopPropagation();
-            form.classList.add('was-validated');
-            return;
-        }
-
-
-
-        form.classList.add('was-validated');
-    }, false);
-
     let duration = 0;
     let beforeDuration = 0;
 
@@ -508,32 +357,11 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
         if ($(this).text() == "Thêm tour mới" || $(this).text() == "Lưu tour") {
             let isValidForm = validateForm1;
 
-            // fields.forEach(field => {
-            //     const $input = $(field.selector);
-            //     if (!validateField($input, field.validate($input.val()), field.message)) {
-            //         isValidForm = false;
-            //     }
-            // });
-
-            // const files = $('#image-input')[0].files;
-            // if (files.length === 0) {
-            //     isValidForm = false;
-            // }
-
-            // tourQuill.forEach(quill => {
-            //     if (!quill.validate()) isValidForm = false;
-            // })
-
-            // if (!this.checkValidity() || !isValidForm || flag) {
-            //     $('#tourForm').addClass("was-validated");
-            //     return;
-            // }
-
             if (!isValidForm()) {
                 $('#tourForm').addClass("was-validated");
 
-                quillInstances.forEach(({quill, wrapper}) => {
-                    if(wrapper.is(":visible")) quill.validate();
+                quillInstances.forEach(({ quill, wrapper }) => {
+                    if (wrapper.is(":visible")) quill.validate();
                 })
 
                 return;
@@ -635,6 +463,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             }).get().join(', ');
 
         const tour = {
+            "tourId": $('#tourId').val().trim(),
             "tourName": $('#tourName').val().trim(),
             "duration": $('#tourDuration').val().trim(),
             "vehicle": vehicle,
@@ -653,6 +482,11 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             .map(item => item.file)
             .forEach(file => formData.append('newImages', file));
 
+        const delImages = existingImages
+            .filter(item => item.deleted)
+            .map(item => item.id).join(",");
+
+        formData.append('delImages', delImages);
 
         formData.append('tour', JSON.stringify(tour));
         formData.append("categoryId", $('#idCategory').val());
@@ -666,6 +500,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
                     }).get();
                 const mealDescription = meals.length > 0 ? meals.length + " bữa ăn (" + meals.join(", ") + ")" : "Các bữa ăn tự chuẩn bị";
                 const tourProgram = {
+                    "id": parseInt(wrapper.attr("data-tpi")),
                     "locations": wrapper.find('.locations').val().trim(),
                     "day": parseInt(wrapper.find('.day').text()),
                     "mealDescription": mealDescription,
@@ -678,8 +513,12 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
         formData.append("tourPrograms", JSON.stringify(tourPrograms));
 
+        console.log(JSON.stringify(tour));
+        console.log(JSON.stringify(tourPrograms));
+
+
         $.ajax({
-            url: '/adv/to/tour/tour_form?action=add',
+            url: '/adv/to/tour/tour_form?action=update&tourid='+encodeURIComponent(tourId),
             type: 'POST',
             data: formData,
             processData: false,
@@ -706,22 +545,17 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
             quill.enable(false);
         })
 
-        $('#infoBasic').find('input[type="checkbox"]').on('click', function (e) {
+        $('#tourForm').find('input[type="checkbox"]').on('click', function (e) {
             e.preventDefault();
         })
 
-        $('#infoBasic').find('input:not([type="file"]), textarea').prop('readonly', true);
+        $('#tourForm').find('input:not([type="file"]), textarea').prop('readonly', true);
 
         $('#idCategory').on('focus, click', function (e) {
             this.blur();
         })
 
         $('#image-input').addClass('bg-light');
-
-        // $('#image-list').on('click', 'button', function (e) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        // })
 
         $('#image-list').find('button').prop('disabled', true);
 
@@ -811,7 +645,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
                     <div class="row">
                       <div class="col-md-8 col-sm-12">
                         <div class="form-floating">
-                          <input type="text" class="form-control locations" placeholder="Thời điểm lý tưởng">
+                          <input type="text" class="form-control locations" placeholder="Thời điểm lý tưởng" required>
                           <label>Địa điểm chương trình</label>
                           <div class="invalid-feedback">Độ dài từ 10 ký tự trở lên</div>
                         </div>

@@ -40,7 +40,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <script type="module" src="assets/js/tour/form-tour.js"></script>
+  <script type="module" src="assets/js/tour/form-update-tour.js"></script>
 </head>
 
 <body>
@@ -395,12 +395,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle d-flex">
-      <h1>Thêm tour mới</h1>
+      <h1>Cập nhật tour</h1>
       <nav class="ms-auto">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
           <li class="breadcrumb-item">Quản lý tour</li>
-          <li class="breadcrumb-item active">Thêm tour mới</li>
+          <li class="breadcrumb-item active">Cập nhật tour</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -411,7 +411,7 @@
           <!-- ...existing code... -->
           <form class="needs-validation" id="tourForm" novalidate action="">
             <div class="card">
-              <div class="card-body" id="infoBasic">
+              <div class="card-body">
                 <h5 class="card-title">Nhập thông tin cho tour mới</h5>
 
                 <!-- General Form Elements -->
@@ -419,7 +419,7 @@
                 <div class="row mb-3" id="tourInfo">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control bg-light" id="tourId" placeholder="Mã tour" readonly>
+                      <input type="text" class="form-control bg-light" id="tourId" placeholder="Mã tour" value="T001-456127-3N2Đ" readonly required>
                       <label for="tourId">Mã tour</label>
                     </div>
                   </div>
@@ -434,37 +434,9 @@
                   </div>
                 </div>
 
-
                 <div class="d-flex overflow-auto gap-3 p-2 border col-12 mb-3" style="height: 250px; width: auto;">
                   <div id="image-list" class="d-flex overflow-auto gap-3 p-2 border col-12 mb-0 border-0"
-                    style="height: 250px; width: auto;">
-
-                  </div>
-                  <!-- <div class="position-relative" style="min-width: 200px">
-                    <img
-                      src="https://baodongnai.com.vn/file/e7837c02876411cd0187645a2551379f/dataimages/201706/original/images1920558_4053279_16.jpg"
-                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
-                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
-                      <i class="bi bi-x text-white fw-bold fs-5"></i>
-                    </button>
-                  </div> -->
-
-                  <!-- <div class="position-relative" style="min-width: 200px">
-                    <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdvHiMePqz1GKwY38h5_Nfx0ga731PEC0l7A&s"
-                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
-                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
-                      <i class="bi bi-x text-white fw-bold fs-5"></i>
-                    </button>
-                  </div>
-
-                  <div class="position-relative" style="min-width: 200px">
-                    <img src="https://cdn-media.sforum.vn/storage/app/media/anh-dep-83.jpg"
-                      class="img-thumbnail position-absolute top-0 end-0" style="width: 100%; height: 220px;" />
-                    <button class="btn btn-danger rounded-circle py-0 px-1 position-absolute top-0 end-0">
-                      <i class="bi bi-x text-white fw-bold fs-5"></i>
-                    </button>
-                  </div> -->
+                    style="height: 250px; width: auto;"></div>
 
                   <div class="w-100 h100 d-flex align-items-center me-3">
                     <button type="button" class="bg-white border-0" id="add-image-btn">
@@ -481,7 +453,7 @@
                 <div class="row mb-3">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="number" class="form-control" id="tourDuration" placeholder="Thời lượng tour" required>
+                      <input type="number" class="form-control bg-light" id="tourDuration" placeholder="Thời lượng tour" value="1" required readonly>
                       <label for="tourDuration">Thời lượng tour (ngày)</label>
                       <div class="invalid-feedback">Từ 1 đến 60 ngày</div>
 
@@ -489,14 +461,14 @@
                   </div>
                   <div class="col-md-6 mt-3 mt-md-0">
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="tourDeparture" placeholder="Nơi khởi hành" required>
+                      <input type="text" class="form-control bg-light" id="tourDeparture" placeholder="Nơi khởi hành" value="Hà Nội" required readonly>
                       <label for="tourDeparture">Nơi khởi hành</label>
                       <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
                     </div>
                   </div>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="tourAttractions" placeholder="Điểm tham quan" required>
+                  <input type="text" class="form-control bg-light" id="tourAttractions" placeholder="Điểm tham quan" value="Điểm tham quan" readonly required>
                   <label for="tourAttractions">Điểm tham quan</label>
                   <div class="invalid-feedback">Độ dài từ 6 đến 255 ký tự</div>
                 </div>
@@ -596,7 +568,7 @@
                       style="width: 150px;">Bỏ khôi phục</a>
                   </div>
                   <div class="col-auto">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnCancel" 
                       style="width: 150px;">Hủy bỏ</button>
                   </div>
                   <div class="col-auto">
@@ -619,7 +591,7 @@
                         Thông tin tour sẽ không được lưu?
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnCancel" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
                         <button type="button" class="btn btn-danger" id="btnExit">Xác nhận</button>
                       </div>
                     </div>
