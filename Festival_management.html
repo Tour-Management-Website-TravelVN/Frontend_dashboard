@@ -39,6 +39,10 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+  <script type="module" src="assets/js/festival/festival.js"></script>
+
 </head>
 
 <body>
@@ -410,6 +414,10 @@
               <div class="d-flex mt-3">
                 <!-- <div class="btn btn-info fw-bold me-2 ms-auto text-white"> <i class="bi bi-eye-fill"></i>
                   Sửa hiển thị </div> -->
+                <select class="form-select fw-bold w-25 text-secondary" id="page">
+                  <option value="1" selected>Trang 1</option>
+                  <option value="index.html">Trang 2</option>
+                </select>
                 <div class="btn btn-success fw-bold me-2 ms-auto" data-bs-toggle="modal" data-bs-target="#addFes"> <i
                     class="bi bi-plus-circle-fill"></i>
                   Thêm lễ hội </div>
@@ -429,32 +437,31 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">1</td>
-                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">Giỗ tổ Hùng Vương</td>
-                    <td class="text-justify" data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">
+                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;" class="fesId">1</td>
+                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;" class="fesName">Giỗ tổ Hùng Vương</td>
+                    <td class="text-justify fesDes" data-des="Giỗ tổ Hùng Vương long" data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">
                       Giỗ tổ Hùng Vương 10/3</td>
-                    <td align="center" data-order="Hiện" data-search="Hiện">
+                    <td align="center" data-order="Hiện" data-search="Hiện" class="status">
                       <i class="bi bi-eye text-primary fs-4"></i>
-                      <span class="d-none">Hiện</span>
+                      <i class="bi bi-eye-slash text-danger fs-4 d-none"></i>
                     </td>
                     <td class="d-flex justify-content-evenly">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                      <button type="button" class="btn btn-primary btnUpdate" data-bs-toggle="modal"
                         data-bs-target="#updateFes"><i class="bi bi-pencil-fill"></i></button>
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill"></i></button>
+                      <button type="button" class="btn btn-danger btnDel"><i class="bi bi-trash3-fill"></i></button>
                     </td>
                   </tr>
                   <tr>
-                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">2</td>
-                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">Quốc tế lao động</td>
-                    <td class="text-justify" data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">
+                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;" class="fesId">2</td>
+                    <td data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;" class="fesName">Quốc tế lao động</td>
+                    <td class="text-justify fesDes" data-des="Quốc tế lao động long" data-bs-toggle="modal" data-bs-target="#viewFes" style="cursor: pointer;">
                       Ngày lễ 01/05</td>
-                    <td align="center" data-order="Ẩn" data-search="Ẩn">
+                    <td align="center" data-order="Ẩn" data-search="Ẩn" class="status">
+                      <i class="bi bi-eye text-primary fs-4 d-none"></i>
                       <i class="bi bi-eye-slash text-danger fs-4"></i>
-                      <span class="d-none">Ẩn</span>
                     </td>
                     <td class="d-flex justify-content-evenly">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                      <button type="button" class="btn btn-primary btnUpdate" data-bs-toggle="modal"
                         data-bs-target="#updateFes"><i class="bi bi-pencil-fill"></i></button>
                       <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill"></i></button>
@@ -1168,29 +1175,30 @@
                       </div>
                       <hr>
 
-                      <form class="needs-validation">
+                      <form class="needs-validation" novalidate id="formAdd">
                         <div class="row">
                           <div class="col">
                             <div class="form-floating mb-3">
-                              <input type="text" class="form-control" id="floatingInput">
+                              <input type="text" class="form-control" id="festiName" required>
                               <label for="floatingInput">Tên lễ hội</label>
+                              <div class="invalid-feedback">Từ 10 đến 255 ký tự</div>
                             </div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                           </div>
                           <div class="col-auto text-center position-relative">
                             <small class="text-secondary">Hiển thị</small><br>
                             <i class="bi bi-eye text-primary fs-3 mb-5"></i>
+                            <i class="bi bi-eye-slash text-danger d-none fs-3 mb-5"></i>
                           </div>
                         </div>
                         <div class="form-floating mb-3">
-                          <textarea class="form-control" style="height: 200px;"></textarea>
+                          <textarea class="form-control" style="height: 200px;" id="festiDes"></textarea>
                           <label>Mô tả</label>
                         </div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                         <div class="d-flex justify-content-center">
                           <button type="button" class="btn btn-danger me-1" style="width: 30%;"
                             data-bs-dismiss="modal">Hủy</button>
-                          <button type="button" class="btn btn-success ms-1" style="width: 30%;">Thêm</button>
+                          <button type="submit" class="btn btn-success ms-1" style="width: 30%;">Thêm</button>
                         </div>
                       </form>
 
@@ -1211,36 +1219,35 @@
                       </div>
                       <hr>
 
-                      <form class="needs-validation">
+                      <form class="needs-validation" id="formView">
                         <div class="row">
                           <div class="col-2">
                             <div class="form-floating">
-                              <input type="text" class="form-control border-0 ms-0" value="1" readonly>
+                              <input type="text" class="form-control border-0 ms-0" id="festivalId" value="1" readonly>
                               <label for="floatingInput">Mã lễ hội</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-floating mb-3">
-                              <input type="text" class="form-control border-0 ms-1" value="Hoa Cỏ" readonly>
+                              <input type="text" class="form-control border-0 ms-1" id="festivalName" value="Hoa Cỏ" readonly>
                               <label for="floatingInput">Tên lễ hội</label>
                             </div>
                           </div>
                           <div class="col-auto text-center position-relative">
                             <small class="text-secondary">Hiển thị</small><br>
                             <i class="bi bi-eye text-primary fs-3 mb-5"></i>
+                            <i class="bi bi-eye-slash text-danger d-none fs-3 mb-5"></i>
                           </div>
                         </div>
 
                         <div class="form-floating mb-3">
-                          <textarea class="form-control border-0 ms-0" style="height: 200px;">poldih</textarea>
+                          <textarea class="form-control border-0 ms-0" style="height: 200px;" id="festivalDes" readonly>poldih</textarea>
                           <label>Mô tả</label>
                         </div>
 
                         <div class="d-flex justify-content-center">
-                          <button type="button" class="btn btn-danger me-1" style="width: 30%;" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">Xóa</button>
-                          <button type="button" class="btn btn-primary ms-1" style="width: 30%;" data-bs-toggle="modal"
-                            data-bs-target="#updateFes">Sửa</button>
+                          <button type="button" class="btn btn-danger me-1 btnDel" style="width: 30%;">Xóa</button>
+                          <button type="button" class="btn btn-primary ms-1" style="width: 30%;" id="btnChange">Sửa</button>
                         </div>
                       </form>
 
@@ -1261,35 +1268,37 @@
                       </div>
                       <hr>
 
-                      <form class="needs-validation">
+                      <form class="needs-validation" novalidate id="formUpdate">
                         <div class="row">
                           <div class="col-2">
                             <div class="form-floating">
-                              <input type="text" class="form-control border-0 ms-0" value="1" readonly>
+                              <input type="text" class="form-control border-0 ms-0" value="1" id="festiId2" readonly>
                               <label for="floatingInput">Mã lễ hội</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-floating mb-3">
-                              <input type="text" class="form-control" id="floatingInput">
+                              <input type="text" class="form-control" id="festiName2">
                               <label for="floatingInput">Tên lễ hội</label>
+                              <div class="invalid-feedback">Từ 10 đến 255 ký tự</div>
                             </div>
                           </div>
                           <div class="col-auto text-center position-relative">
                             <small class="text-secondary">Hiển thị</small><br>
                             <i class="bi bi-eye text-primary fs-3 mb-5"></i>
+                            <i class="bi bi-eye-slash text-danger d-none fs-3 mb-5"></i>
                           </div>
                         </div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                         <div class="form-floating mb-3">
-                          <textarea class="form-control" style="height: 200px;"></textarea>
+                          <textarea class="form-control" style="height: 200px;" id="festiDes2"></textarea>
                           <label>Mô tả</label>
                         </div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                         <div class="d-flex justify-content-center">
                           <button type="button" class="btn btn-danger me-1" style="width: 30%;"
                             data-bs-dismiss="modal">Hủy</button>
-                          <button type="button" class="btn btn-primary ms-1" style="width: 30%;">Sửa</button>
+                          <button type="submit" class="btn btn-primary ms-1" style="width: 30%;">Sửa</button>
                         </div>
                       </form>
 
@@ -1307,12 +1316,10 @@
                       <h5 class="modal-title text-danger fw-bold fs-4" id="staticBackdropLabel">Xác nhận xóa</h5>
                       <button type="button" class="btn-close fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                      Bạn có muốn xóa &lt;Tên lễ hội&gt;?
-                    </div>
+                    <div class="modal-body">Bạn có muốn xóa &lt;Tên lễ hội&gt;?</div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                      <button type="button" class="btn btn-primary">Xác nhận</button>
+                      <button type="button" class="btn btn-primary btnDelete">Xác nhận</button>
                     </div>
                   </div>
                 </div>
@@ -2171,6 +2178,18 @@
         </div>
       </div>
     </section>
+
+    <div class="toast position-fixed bottom-0 end-0" style="z-index: 999999;" id="myToast" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="toast-header bg-primary">
+        <strong class="me-auto text-warning">Thông báo</strong>
+        <small class="text-white">Vừa xong</small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body bg-white">
+        Đã cập nhật thông tin tour.
+      </div>
+    </div>
 
   </main><!-- End #main -->
 

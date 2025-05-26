@@ -176,3 +176,14 @@ export function validateAddressLite(param) {
         return false;
     return param.length >= 20;
   }
+
+  //Kiểm tra độ dài
+export function validateLength(param, min, max) {
+    return param.trim().length >= min && param.trim().length <= max;
+}
+
+  //Kiểm tra giảm giá
+export function validateDiscount(value, unit) {
+    if(unit == "%") return value >=1 && value<=30;
+    else if (unit == "VND") return value>=1000;
+}

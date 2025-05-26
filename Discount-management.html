@@ -39,6 +39,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script src="assets/vendor/jquery/jquery-3.7.1.min.js"></script>
+  <script type="module" src="assets/js/discount/discount.js"></script>
 </head>
 
 <body>
@@ -410,15 +412,19 @@
 
           <div class="card">
             <div class="card-body">
-              <div class="d-flex mt-3">
+              <div class="d-flex justify-content-between mt-3">
                 <!-- <div class="btn btn-info fw-bold me-2 ms-auto text-white"> <i class="bi bi-eye-fill"></i>
                   Sửa hiển thị </div> -->
+                <select class="form-select fw-bold w-25 text-secondary" id="page">
+                  <option value="1" selected>Trang 1</option>
+                  <option value="index.html">Trang 2</option>
+                </select>
                 <div class="btn btn-success fw-bold me-2 ms-auto" data-bs-toggle="modal" data-bs-target="#addDis"> <i
                     class="bi bi-plus-circle-fill"></i>
                   Thêm giảm giá </div>
               </div>
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatableDis">
                 <thead>
                   <tr>
                     <th style="width: 10%;">ID</th>
@@ -431,32 +437,30 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>Giảm giá 50%</td>
-                    <td align="center" class="text-justify">
+                    <td class="disId" data-id="1">1</td>
+                    <td class="disName" data-name="Giảm giá 50%">Giảm giá 50%</td>
+                    <td align="center" class="text-justify disValue" data-value="50" data-unit="%">
                       50%</td>
                     <!-- <td align="center">
                       %
                     </td> -->
                     <td class="d-flex justify-content-evenly" data-order="null" data-search="null">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#updateDis"><i class="bi bi-pencil-fill"></i></button>
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill"></i></button>
+                      <button type="button" class="btn btn-primary btnUpdate"><i class="bi bi-pencil-fill"></i></button>
+                      <button type="button" class="btn btn-danger btnDel"><i class="bi bi-trash3-fill"></i></button>
                     </td>
                   </tr>
                   <tr>
-                    <td>2</td>
-                    <td>Giảm giá 10%</td>
-                    <td align="center" class="text-justify">
+                    <td class="disId" data-id="2">2</td>
+                    <td class="disName" data-name="Giảm giá 10%">Giảm giá 10%</td>
+                    <td align="center" class="text-justify disValue" data-value="10" data-unit="%">
                       10%</td>
                     <!-- <td align="center">
                       %
                     </td> -->
                     <td class="d-flex justify-content-evenly">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                      <button type="button" class="btn btn-primary btnUpdate" data-bs-toggle="modal" 
                         data-bs-target="#updateDis"><i class="bi bi-pencil-fill"></i></button>
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                      <button type="button" class="btn btn-danger btnDel" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"><i class="bi bi-trash3-fill"></i></button>
                     </td>
                   </tr>
@@ -475,26 +479,27 @@
                       </div>
                       <hr>
 
-                      <form class="needs-validation">
+                      <form class="needs-validation" id="formAdd" novalidate>
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput">
+                          <input type="text" class="form-control" id="discountName" required>
                           <label>Tên chương trình giảm giá</label>
+                          <div class="invalid-feedback">Độ dài nằm trong khoảng 10 đến 255 ký tự</div>
                         </div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
 
                         <div class="row">
 
                           <div class="col">
                             <div class="form-floating mb-3">
-                              <input type="number" class="form-control" id="floatingInput">
+                              <input type="number" class="form-control" id="discountValue" required>
                               <label for="floatingInput">Giá trị</label>
+                              <div class="invalid-feedback">Giá trị không phù hợp.</div>
                             </div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                            <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
                           </div>
                           <div class="col-auto text-center position-relative">
                             <div class="form-floating">
-                              <select class="form-select" id="floatingSelect"
-                                aria-label="Floating label select example">
+                              <select class="form-select" id="discountUnit" aria-label="Floating label select example">
                                 <option value="VND" selected>VND</option>
                                 <option value="%">%</option>
                               </select>
@@ -507,7 +512,7 @@
                         <div class="d-flex justify-content-center">
                           <button type="button" class="btn btn-danger me-1" style="width: 30%;"
                             data-bs-dismiss="modal">Hủy</button>
-                          <button type="button" class="btn btn-success ms-1" style="width: 30%;">Thêm</button>
+                          <button type="submit" class="btn btn-success ms-1" style="width: 30%;">Thêm</button>
                         </div>
                       </form>
 
@@ -516,7 +521,7 @@
                 </div>
               </div>
 
-              <!-- Modal Update Fes-->
+              <!-- Modal Update Dis-->
               <div class="modal" id="updateDis" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md modal-dialog-centered">
@@ -528,39 +533,36 @@
                       </div>
                       <hr>
 
-                      <form class="needs-validation">
-
+                      <form class="needs-validation" id="formUpdate">
                         <div class="row">
                           <div class="col-2">
                             <div class="form-floating mb-3">
-                              <input type="text" class="form-control border-0 ms-1" id="floatingInput" value="1"
-                                readonly>
+                              <input type="text" class="form-control border-0 ms-1" id="discountId2" value="1"
+                                readonly required>
                               <label>Mã</label>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-floating mb-3">
-                              <input type="text" class="form-control" id="floatingInput">
+                              <input type="text" class="form-control" id="discountName2" required>
                               <label>Tên chương trình giảm giá</label>
+                              <div class="invalid-feedback">Độ dài nằm trong khoảng 10 đến 255 ký tự</div>
                             </div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                            <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
                           </div>
                         </div>
-
-
                         <div class="row">
-
                           <div class="col">
                             <div class="form-floating mb-3">
-                              <input type="number" class="form-control" id="floatingInput">
+                              <input type="number" class="form-control" id="discountValue2" required>
                               <label for="floatingInput">Giá trị</label>
+                              <div class="invalid-feedback">Giá trị không phù hợp.</div>
                             </div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                            <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
                           </div>
                           <div class="col-auto text-center position-relative">
                             <div class="form-floating">
-                              <select class="form-select" id="floatingSelect"
-                                aria-label="Floating label select example">
+                              <select class="form-select" id="discountUnit2" aria-label="Floating label select example">
                                 <option value="VND" selected>VND</option>
                                 <option value="%">%</option>
                               </select>
@@ -573,7 +575,7 @@
                         <div class="d-flex justify-content-center">
                           <button type="button" class="btn btn-danger me-1" style="width: 30%;"
                             data-bs-dismiss="modal">Hủy</button>
-                          <button type="button" class="btn btn-primary ms-1" style="width: 30%;">Sửa</button>
+                          <button type="submit" class="btn btn-primary ms-1" style="width: 30%;">Sửa</button>
                         </div>
                       </form>
 
@@ -596,7 +598,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
-                      <button type="button" class="btn btn-primary">Xác nhận</button>
+                      <button type="button" class="btn btn-primary" id="btnDelete">Xác nhận</button>
                     </div>
                   </div>
                 </div>
@@ -1426,6 +1428,18 @@
         </div>
       </div>
     </section>
+
+    <div class="toast position-fixed bottom-0 end-0" style="z-index: 999999;" id="myToast" role="alert"
+      aria-live="assertive" aria-atomic="true">
+      <div class="toast-header bg-primary">
+        <strong class="me-auto text-warning">Thông báo</strong>
+        <small class="text-white">Vừa xong</small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body bg-white">
+        Đã cập nhật thông tin tour.
+      </div>
+    </div>
 
   </main><!-- End #main -->
 

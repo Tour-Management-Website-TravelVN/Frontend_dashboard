@@ -52,7 +52,13 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
     $(document).ready(function () {
         restoreTourPrograms(JSON.parse(localStorage.getItem("tourPrograms")));
-        localStorage.removeItem("tourPrograms")
+        localStorage.removeItem("tourPrograms");
+        quillDescription.root.innerHTML = JSON.parse(localStorage.getItem("description"));
+        quillIncluded.root.innerHTML = JSON.parse(localStorage.getItem("inclusion"));
+        quillNotIncluded.root.innerHTML = JSON.parse(localStorage.getItem("exclusion"));
+        localStorage.removeItem("description");
+        localStorage.removeItem("inclusion");
+        localStorage.removeItem("exclusion");
 
         loadFormFromLocalStorage();
         const fromStorage = localStorage.getItem('updateImgsTour');
@@ -213,6 +219,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
         $('#btnClear').click(function(){
             localStorage.removeItem("tourFormDraft2");
+            let tourid = $('#tourId').val();
             window.location.href = "/adv/to/tour/tour_form?action=update&tourid="+encodeURIComponent(tourid);
         })
 
@@ -518,7 +525,7 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
 
         $.ajax({
-            url: '/adv/to/tour/tour_form?action=update&tourid='+encodeURIComponent(tourId),
+            url: '/adv/to/tour/tour_form?action=update&tourid='+encodeURIComponent($('#tourId').val()),
             type: 'POST',
             data: formData,
             processData: false,
@@ -583,6 +590,8 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
 
         $('#tourForm').find('input:not([type="file"]), textarea').prop('readonly', false);
         $('#tourId').prop('readonly', true);
+        $('#tourDeparture').prop('readonly', true);
+        $('#tourAttractions').prop('readonly', true);
 
         $('#idCategory').off('focus click');
 
@@ -695,7 +704,21 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
         $(editorWrapper).find('.tpContent').after(editorDiv, feedback);
         $('#tourPrograms').append(editorWrapper);
 
-        const quill = new Quill(editorDiv[0], { theme: 'snow' });
+        const quill = new Quill(editorDiv[0], {
+          modules: {
+            toolbar: [
+              [{ font: [] }, { size: [] }],
+              ['bold', 'italic', 'underline', 'strike'],
+              [{ color: [] }, { background: [] }],
+              [{ script: 'super' }, { script: 'sub' }],
+              [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+              ['direction', { align: [] }],
+              ['link', 'image', 'video'],
+              ['clean']
+            ]
+          },
+          theme: 'snow'
+        });
 
         // Gắn sự kiện validate nếu muốn
         quill.on('text-change', function () {

@@ -861,7 +861,21 @@ import { validateTourName, validateDuration, validateInfoTour } from "../validat
         $(editorWrapper).find('.tpContent').after(editorDiv, feedback);
         $('#tourPrograms').append(editorWrapper);
 
-        const quill = new Quill(editorDiv[0], { theme: 'snow' });
+        const quill = new Quill(editorDiv[0], {
+          modules: {
+            toolbar: [
+              [{ font: [] }, { size: [] }],
+              ['bold', 'italic', 'underline', 'strike'],
+              [{ color: [] }, { background: [] }],
+              [{ script: 'super' }, { script: 'sub' }],
+              [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+              ['direction', { align: [] }],
+              ['link', 'image', 'video'],
+              ['clean']
+            ]
+          },
+          theme: 'snow'
+        });
 
         // Gắn sự kiện validate nếu muốn
         quill.on('text-change', function () {
